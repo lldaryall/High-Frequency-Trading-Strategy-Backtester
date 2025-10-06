@@ -1,0 +1,43 @@
+data:
+  end_time: null
+  kind: trade
+  path: /var/folders/2n/s7_hww890bzb066_sgl3tvxh0000gn/T/tmppjpcjp38/data/test_l1.parquet
+  start_time: null
+  symbol: null
+description: null
+execution:
+  fees:
+    maker_bps: 0.0
+    per_share: 0.0
+    taker_bps: 0.5
+  latency:
+    mean_ns: 100000
+    model: normal
+    seed: 42
+    std_ns: 20000
+  slippage: null
+  transaction_costs: null
+name: null
+report:
+  detailed_trades: true
+  format: both
+  output_dir: /var/folders/2n/s7_hww890bzb066_sgl3tvxh0000gn/T/tmppjpcjp38/results
+  performance_metrics: true
+  plots: true
+risk:
+  max_daily_loss: -2000
+  max_drawdown: null
+  max_gross: 100000
+  max_leverage: null
+  max_pos_per_symbol: 1000
+strategy:
+  enabled: true
+  max_order_size: 100
+  max_position: 1000
+  name: mean_reversion
+  params:
+    exit_z_score: 0.2
+    lookback_period: 10
+    position_size: 100
+    z_score_threshold: 0.5
+  symbol: TEST

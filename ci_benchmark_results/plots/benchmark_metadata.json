@@ -1,0 +1,19 @@
+{
+  "timestamp": "2025-10-06T15:03:22.578402",
+  "csv_file": "ci_benchmark_results/bench_1000000.csv",
+  "output_dir": "ci_benchmark_results/plots",
+  "plots": {
+    "ops_comparison": "ci_benchmark_results/plots/ops_comparison.png",
+    "latency_distribution": "ci_benchmark_results/plots/latency_distribution.png",
+    "throughput_scatter": "ci_benchmark_results/plots/throughput_scatter.png",
+    "performance_summary": "ci_benchmark_results/plots/performance_summary.png"
+  },
+  "data_summary": {
+    "num_engines": 2,
+    "engines": [
+      "Python",
+      "C++"
+    ],
+    "total_events": 1800000.0
+  }
+}

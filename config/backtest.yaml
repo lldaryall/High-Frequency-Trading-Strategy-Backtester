@@ -1,0 +1,79 @@
+# Flashback HFT Backtesting Configuration
+# This is a sample configuration file for running backtests
+
+name: "Sample HFT Backtest"
+description: "Example backtest using momentum imbalance strategy"
+
+# Data source configuration
+data:
+  path: "examples/sample_data/aapl_l1.parquet"
+  kind: "book"  # or "trade"
+  symbol: "AAPL"
+  start_time: null  # Optional: filter start time
+  end_time: null    # Optional: filter end time
+
+# Strategy configuration
+strategy:
+  name: "momentum_imbalance"  # or "mean_reversion"
+  symbol: "AAPL"
+  enabled: true
+  max_position: 1000
+  max_order_size: 100
+  params:
+    # Momentum Imbalance Strategy Parameters
+    short_ema_period: 5
+    long_ema_period: 20
+    imbalance_threshold: 0.3
+    take_profit_pct: 0.02
+    stop_loss_pct: 0.01
+    min_trade_size: 10
+    max_trade_size: 100
+
+# Execution configuration
+execution:
+  # Fee structure
+  fees:
+    maker_bps: 0.0    # Maker rebate in basis points
+    taker_bps: 0.5    # Taker fee in basis points
+    per_share: 0.0    # Per-share cost
+  
+  # Latency model
+  latency:
+    model: "normal"   # "normal", "uniform", "exponential"
+    mean_ns: 500000   # Mean latency in nanoseconds (500 microseconds)
+    std_ns: 100000    # Standard deviation in nanoseconds
+    seed: 42          # Random seed for reproducibility
+  
+  # Slippage model (optional)
+  slippage:
+    model: "imbalance"
+    base_slippage_bps: 1.0
+    adverse_selection_factor: 1.5
+    imbalance_threshold: 0.4
+    max_slippage_bps: 5.0
+    min_slippage_bps: 0.1
+  
+  # Transaction costs (optional)
+  transaction_costs:
+    model: "simple"
+    maker_fee_bps: 0.0
+    taker_fee_bps: 0.5
+    per_share_cost: 0.001
+    min_fee: 0.01
+    max_fee: 100.0
+
+# Risk management configuration
+risk:
+  max_gross: 100000        # Maximum gross exposure
+  max_pos_per_symbol: 1000 # Maximum position per symbol
+  max_daily_loss: -2000    # Maximum daily loss (negative)
+  max_drawdown: -0.05      # Maximum drawdown (optional)
+  max_leverage: 2.0        # Maximum leverage (optional)
+
+# Reporting configuration
+report:
+  output_dir: "runs/2025-01-06T00-00-00"
+  format: "both"           # "json", "csv", or "both"
+  plots: true              # Generate performance plots
+  detailed_trades: true    # Save detailed trade data
+  performance_metrics: true # Calculate performance metrics

@@ -1,0 +1,4 @@
+latency_ns,latency_model,total_return,annualized_return,sharpe_ratio,max_drawdown,hit_rate,total_trades,mean_latency_ns,p95_latency_ns
+100000,random,0.0,0.0,0.0,0.0,0.0,0,0.0,0.0
+250000,random,0.0,0.0,0.0,0.0,0.0,0,0.0,0.0
+500000,random,0.0,0.0,0.0,0.0,0.0,0,0.0,0.0

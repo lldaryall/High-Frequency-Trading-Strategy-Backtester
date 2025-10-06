@@ -1,0 +1,41 @@
+data:
+  path: "examples/sample_data/aapl_l1.parquet"
+  kind: "trade"
+  format: "parquet"
+
+strategy:
+  name: "momentum_imbalance"
+  symbol: "AAPL"
+  enabled: true
+  max_position: 1000
+  max_order_size: 100
+  risk_limits: []
+  params:
+    short_ema_period: 5
+    long_ema_period: 10
+    imbalance_threshold: 0.6
+    take_profit_pct: 0.02
+    stop_loss_pct: 0.01
+
+execution:
+  fees:
+    maker_bps: 0.0
+    taker_bps: 0.5
+    per_share: 0.0
+  latency:
+    model: "normal"
+    mean_ns: 100000
+    std_ns: 20000
+    seed: 42
+
+risk:
+  max_gross: 100000
+  max_pos_per_symbol: 1000
+  max_daily_loss: -2000
+
+report:
+  output_dir: "runs/quickstart_demo"
+  format: "both"
+  plots: true
+  detailed_trades: true
+  performance_metrics: true

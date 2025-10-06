@@ -1,0 +1,2 @@
+total_return,annualized_return,volatility,sharpe_ratio,max_drawdown,max_drawdown_duration,total_trades,winning_trades,losing_trades,hit_rate,avg_win,avg_loss,win_loss_ratio,profit_factor,turnover,avg_position_size,max_position_size,mean_latency_ns,p95_latency_ns,p99_latency_ns,var_95,cvar_95,calmar_ratio,start_time,end_time,duration_days,initial_capital,final_capital,total_fees,total_slippage
+0.0,0.0,0.0,0.0,0.0,0,0,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,1000000000000000000,1000000009998000000,0.0001157175925925926,1000000.0,1000000.0,0,0.0

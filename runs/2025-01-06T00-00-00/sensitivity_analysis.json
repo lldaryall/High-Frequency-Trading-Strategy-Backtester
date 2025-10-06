@@ -1,0 +1,34 @@
+{
+  "correlations": {
+    "total_return": NaN,
+    "sharpe_ratio": NaN,
+    "max_drawdown": NaN
+  },
+  "sensitivity_per_us": {
+    "total_return": 0.0,
+    "sharpe_ratio": 0.0
+  },
+  "degradation_pct": {
+    "total_return": 0.0,
+    "sharpe_ratio": 0.0
+  },
+  "latency_range_ns": {
+    "min": 100000,
+    "max": 500000,
+    "range": 400000
+  },
+  "performance_range": {
+    "total_return": {
+      "min": 0.0,
+      "max": 0.0
+    },
+    "sharpe_ratio": {
+      "min": 0.0,
+      "max": 0.0
+    },
+    "max_drawdown": {
+      "min": 0.0,
+      "max": 0.0
+    }
+  }
+}

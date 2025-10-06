@@ -1,0 +1,58 @@
+data:
+  end_time: null
+  kind: book
+  path: examples/sample_data/aapl_l1.parquet
+  start_time: null
+  symbol: AAPL
+description: Example backtest using momentum imbalance strategy
+execution:
+  fees:
+    maker_bps: 0.0
+    per_share: 0.0
+    taker_bps: 0.5
+  latency:
+    mean_ns: 250000
+    model: normal
+    seed: 42
+    std_ns: 50000.0
+  slippage:
+    adverse_selection_factor: 1.5
+    base_slippage_bps: 1.0
+    imbalance_threshold: 0.4
+    max_slippage_bps: 5.0
+    min_slippage_bps: 0.1
+    model: imbalance
+  transaction_costs:
+    maker_fee_bps: 0.0
+    max_fee: 100.0
+    min_fee: 0.01
+    model: simple
+    per_share_cost: 0.001
+    taker_fee_bps: 0.5
+name: Sample HFT Backtest
+report:
+  detailed_trades: true
+  format: both
+  output_dir: runs/2025-01-06T00-00-00/latency_250000ns
+  performance_metrics: true
+  plots: true
+risk:
+  max_daily_loss: -2000
+  max_drawdown: -0.05
+  max_gross: 100000
+  max_leverage: 2.0
+  max_pos_per_symbol: 1000
+strategy:
+  enabled: true
+  max_order_size: 100
+  max_position: 1000
+  name: momentum_imbalance
+  params:
+    imbalance_threshold: 0.3
+    long_ema_period: 20
+    max_trade_size: 100
+    min_trade_size: 10
+    short_ema_period: 5
+    stop_loss_pct: 0.01
+    take_profit_pct: 0.02
+  symbol: AAPL
