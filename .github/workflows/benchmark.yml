@@ -69,14 +69,37 @@ jobs:
           CSV_FILE="ci_benchmark_results/bench_100000.csv"
         fi
         
+        # Check if CSV file exists and has data
+        if [ ! -f "$CSV_FILE" ] || [ ! -s "$CSV_FILE" ]; then
+          echo "Error: Benchmark CSV file not found or empty: $CSV_FILE"
+          echo "Available files:"
+          ls -la ci_benchmark_results/ || echo "No ci_benchmark_results directory found"
+          exit 1
+        fi
+        
         # Calculate speedup from CSV
         PYTHON_OPS=$(tail -n +2 "$CSV_FILE" | head -n 1 | cut -d',' -f7)
         CPP_OPS=$(tail -n +2 "$CSV_FILE" | tail -n 1 | cut -d',' -f7)
+        
+        # Validate that we have numeric values
+        if [ -z "$PYTHON_OPS" ] || [ -z "$CPP_OPS" ] || [ "$PYTHON_OPS" = "0" ]; then
+          echo "Error: Invalid benchmark data in $CSV_FILE"
+          echo "PYTHON_OPS: $PYTHON_OPS, CPP_OPS: $CPP_OPS"
+          exit 1
+        fi
+        
         SPEEDUP=$(echo "scale=2; $CPP_OPS / $PYTHON_OPS" | bc)
         
         # Extract latency metrics
         PYTHON_LATENCY=$(tail -n +2 "$CSV_FILE" | head -n 1 | cut -d',' -f8)
         CPP_LATENCY=$(tail -n +2 "$CSV_FILE" | tail -n 1 | cut -d',' -f8)
+        
+        # Validate latency data
+        if [ -z "$PYTHON_LATENCY" ] || [ -z "$CPP_LATENCY" ]; then
+          echo "Error: Invalid latency data in $CSV_FILE"
+          echo "PYTHON_LATENCY: $PYTHON_LATENCY, CPP_LATENCY: $CPP_LATENCY"
+          exit 1
+        fi
         
         # Calculate p95 latency (approximate from std dev)
         # Using 1.96 * std_dev approximation for 95th percentile
