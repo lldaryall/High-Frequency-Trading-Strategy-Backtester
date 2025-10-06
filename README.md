@@ -187,7 +187,3 @@ make ci-bench
 ## License
 
 MIT License - see LICENSE file for details.
-
-## Support
-
-For questions or issues, please open a GitHub issue or contact the maintainers.
