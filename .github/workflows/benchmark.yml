@@ -31,11 +31,10 @@ jobs:
       uses: actions/cache@v4
       with:
         path: |
-          cpp/build/
           flashback/market/_match_cpp.so
-        key: ${{ runner.os }}-cpp-build-${{ hashFiles('cpp/**', 'CMakeLists.txt') }}
+        key: ${{ runner.os }}-cpp-extension-${{ hashFiles('cpp/**', 'CMakeLists.txt') }}
         restore-keys: |
-          ${{ runner.os }}-cpp-build-
+          ${{ runner.os }}-cpp-extension-
     
     - name: Install Python dependencies
       run: |
@@ -43,6 +42,13 @@ jobs:
         pip install -e .
         pip install -e ".[dev]"
         pip install pybind11
+    
+    - name: Clean C++ build directory
+      run: |
+        # Clean the entire build directory to avoid path conflicts
+        rm -rf cpp/build/
+        # Ensure the build directory exists
+        mkdir -p cpp/build
     
     - name: Build C++ extension
       run: make cpp
