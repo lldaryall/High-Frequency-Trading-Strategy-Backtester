@@ -1,7 +1,7 @@
-/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/cpp/build/CMakeFiles/_match_cpp.dir
-/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/cpp/build/CMakeFiles/edit_cache.dir
-/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/cpp/build/CMakeFiles/rebuild_cache.dir
-/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/cpp/build/CMakeFiles/list_install_components.dir
-/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/cpp/build/CMakeFiles/install.dir
-/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/cpp/build/CMakeFiles/install/local.dir
-/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/cpp/build/CMakeFiles/install/strip.dir
+/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/cpp/build/CMakeFiles/_match_cpp.dir
+/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/cpp/build/CMakeFiles/edit_cache.dir
+/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/cpp/build/CMakeFiles/rebuild_cache.dir
+/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/cpp/build/CMakeFiles/list_install_components.dir
+/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/cpp/build/CMakeFiles/install.dir
+/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/cpp/build/CMakeFiles/install/local.dir
+/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/cpp/build/CMakeFiles/install/strip.dir

@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/flashback/market/_match_cpp.pdb"
-  "/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/flashback/market/_match_cpp.so"
+  "/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/flashback/market/_match_cpp.pdb"
+  "/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/flashback/market/_match_cpp.so"
   "CMakeFiles/_match_cpp.dir/match_engine.cpp.o"
   "CMakeFiles/_match_cpp.dir/match_engine.cpp.o.d"
   "CMakeFiles/_match_cpp.dir/pybind_module.cpp.o"

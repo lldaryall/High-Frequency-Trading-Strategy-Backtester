@@ -1,4 +1,4 @@
-# Install script for directory: /Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/cpp
+# Install script for directory: /Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/cpp
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,18 +39,18 @@ endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/cpp/../flashback/market/_match_cpp.so")
+   "/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/cpp/../flashback/market/_match_cpp.so")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-  file(INSTALL DESTINATION "/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/cpp/../flashback/market" TYPE MODULE FILES "/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/flashback/market/_match_cpp.so")
-  if(EXISTS "$ENV{DESTDIR}/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/cpp/../flashback/market/_match_cpp.so" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/cpp/../flashback/market/_match_cpp.so")
+  file(INSTALL DESTINATION "/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/cpp/../flashback/market" TYPE MODULE FILES "/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/flashback/market/_match_cpp.so")
+  if(EXISTS "$ENV{DESTDIR}/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/cpp/../flashback/market/_match_cpp.so" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/cpp/../flashback/market/_match_cpp.so")
     if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" -x "$ENV{DESTDIR}/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/cpp/../flashback/market/_match_cpp.so")
+      execute_process(COMMAND "/usr/bin/strip" -x "$ENV{DESTDIR}/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/cpp/../flashback/market/_match_cpp.so")
     endif()
   endif()
 endif()
@@ -58,7 +58,7 @@ endif()
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/cpp/build/install_local_manifest.txt"
+  file(WRITE "/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/cpp/build/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
 if(CMAKE_INSTALL_COMPONENT)
@@ -74,6 +74,6 @@ else()
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/cpp/build/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/cpp/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

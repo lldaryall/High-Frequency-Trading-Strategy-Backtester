@@ -6,12 +6,12 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Find Python and pybind11
-set(Python_EXECUTABLE "/Users/daryapylypenko/.pyenv/shims/python")
+set(Python_EXECUTABLE "/Users/daryapylypenko/.pyenv/versions/3.11.9/bin/python")
 find_package(Python COMPONENTS Interpreter Development REQUIRED)
 
 # Use the specific Python executable
-set(PYTHON_EXECUTABLE "/Users/daryapylypenko/.pyenv/shims/python")
-set(Python_EXECUTABLE "/Users/daryapylypenko/.pyenv/shims/python")
+set(PYTHON_EXECUTABLE "/Users/daryapylypenko/.pyenv/versions/3.11.9/bin/python")
+set(Python_EXECUTABLE "/Users/daryapylypenko/.pyenv/versions/3.11.9/bin/python")
 
 # Get pybind11 path from Python
 execute_process(

@@ -12,7 +12,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/Users/daryapylypenko/.pyenv/versions/3.11.9/lib/python3.11/site-packages/pybind11/share/cmake/pybind11/pybind11ConfigVersion.cmake"
   "/Users/daryapylypenko/.pyenv/versions/3.11.9/lib/python3.11/site-packages/pybind11/share/cmake/pybind11/pybind11NewTools.cmake"
   "/Users/daryapylypenko/.pyenv/versions/3.11.9/lib/python3.11/site-packages/pybind11/share/cmake/pybind11/pybind11Targets.cmake"
-  "/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/cpp/CMakeLists.txt"
+  "/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/cpp/CMakeLists.txt"
   "CMakeFiles/4.1.2/CMakeCCompiler.cmake"
   "CMakeFiles/4.1.2/CMakeCXXCompiler.cmake"
   "CMakeFiles/4.1.2/CMakeSystem.cmake"

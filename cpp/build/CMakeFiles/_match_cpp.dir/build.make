@@ -53,10 +53,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/cpp"
+CMAKE_SOURCE_DIR = "/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/cpp"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/cpp/build"
+CMAKE_BINARY_DIR = "/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/cpp/build"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/_match_cpp.dir/depend.make
@@ -73,32 +73,32 @@ CMakeFiles/_match_cpp.dir/codegen:
 .PHONY : CMakeFiles/_match_cpp.dir/codegen
 
 CMakeFiles/_match_cpp.dir/pybind_module.cpp.o: CMakeFiles/_match_cpp.dir/flags.make
-CMakeFiles/_match_cpp.dir/pybind_module.cpp.o: /Users/daryapylypenko/Desktop/QuantProjects/high\ frequency/High-Frequency-Trading-Strategy-Backtester/cpp/pybind_module.cpp
+CMakeFiles/_match_cpp.dir/pybind_module.cpp.o: /Users/daryapylypenko/Desktop/Github/QuantProjects/High\ frequency/High-Frequency-Trading-Strategy-Backtester/cpp/pybind_module.cpp
 CMakeFiles/_match_cpp.dir/pybind_module.cpp.o: CMakeFiles/_match_cpp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/cpp/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/_match_cpp.dir/pybind_module.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/_match_cpp.dir/pybind_module.cpp.o -MF CMakeFiles/_match_cpp.dir/pybind_module.cpp.o.d -o CMakeFiles/_match_cpp.dir/pybind_module.cpp.o -c "/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/cpp/pybind_module.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/cpp/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/_match_cpp.dir/pybind_module.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/_match_cpp.dir/pybind_module.cpp.o -MF CMakeFiles/_match_cpp.dir/pybind_module.cpp.o.d -o CMakeFiles/_match_cpp.dir/pybind_module.cpp.o -c "/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/cpp/pybind_module.cpp"
 
 CMakeFiles/_match_cpp.dir/pybind_module.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/_match_cpp.dir/pybind_module.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/cpp/pybind_module.cpp" > CMakeFiles/_match_cpp.dir/pybind_module.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/cpp/pybind_module.cpp" > CMakeFiles/_match_cpp.dir/pybind_module.cpp.i
 
 CMakeFiles/_match_cpp.dir/pybind_module.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/_match_cpp.dir/pybind_module.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/cpp/pybind_module.cpp" -o CMakeFiles/_match_cpp.dir/pybind_module.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/cpp/pybind_module.cpp" -o CMakeFiles/_match_cpp.dir/pybind_module.cpp.s
 
 CMakeFiles/_match_cpp.dir/match_engine.cpp.o: CMakeFiles/_match_cpp.dir/flags.make
-CMakeFiles/_match_cpp.dir/match_engine.cpp.o: /Users/daryapylypenko/Desktop/QuantProjects/high\ frequency/High-Frequency-Trading-Strategy-Backtester/cpp/match_engine.cpp
+CMakeFiles/_match_cpp.dir/match_engine.cpp.o: /Users/daryapylypenko/Desktop/Github/QuantProjects/High\ frequency/High-Frequency-Trading-Strategy-Backtester/cpp/match_engine.cpp
 CMakeFiles/_match_cpp.dir/match_engine.cpp.o: CMakeFiles/_match_cpp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/cpp/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/_match_cpp.dir/match_engine.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/_match_cpp.dir/match_engine.cpp.o -MF CMakeFiles/_match_cpp.dir/match_engine.cpp.o.d -o CMakeFiles/_match_cpp.dir/match_engine.cpp.o -c "/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/cpp/match_engine.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/cpp/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/_match_cpp.dir/match_engine.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/_match_cpp.dir/match_engine.cpp.o -MF CMakeFiles/_match_cpp.dir/match_engine.cpp.o.d -o CMakeFiles/_match_cpp.dir/match_engine.cpp.o -c "/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/cpp/match_engine.cpp"
 
 CMakeFiles/_match_cpp.dir/match_engine.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/_match_cpp.dir/match_engine.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/cpp/match_engine.cpp" > CMakeFiles/_match_cpp.dir/match_engine.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/cpp/match_engine.cpp" > CMakeFiles/_match_cpp.dir/match_engine.cpp.i
 
 CMakeFiles/_match_cpp.dir/match_engine.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/_match_cpp.dir/match_engine.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/cpp/match_engine.cpp" -o CMakeFiles/_match_cpp.dir/match_engine.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/cpp/match_engine.cpp" -o CMakeFiles/_match_cpp.dir/match_engine.cpp.s
 
 # Object files for target _match_cpp
 _match_cpp_OBJECTS = \
@@ -108,16 +108,16 @@ _match_cpp_OBJECTS = \
 # External object files for target _match_cpp
 _match_cpp_EXTERNAL_OBJECTS =
 
-/Users/daryapylypenko/Desktop/QuantProjects/high\ frequency/High-Frequency-Trading-Strategy-Backtester/flashback/market/_match_cpp.so: CMakeFiles/_match_cpp.dir/pybind_module.cpp.o
-/Users/daryapylypenko/Desktop/QuantProjects/high\ frequency/High-Frequency-Trading-Strategy-Backtester/flashback/market/_match_cpp.so: CMakeFiles/_match_cpp.dir/match_engine.cpp.o
-/Users/daryapylypenko/Desktop/QuantProjects/high\ frequency/High-Frequency-Trading-Strategy-Backtester/flashback/market/_match_cpp.so: CMakeFiles/_match_cpp.dir/build.make
-/Users/daryapylypenko/Desktop/QuantProjects/high\ frequency/High-Frequency-Trading-Strategy-Backtester/flashback/market/_match_cpp.so: CMakeFiles/_match_cpp.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/cpp/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX shared module \"/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/flashback/market/_match_cpp.so\""
+/Users/daryapylypenko/Desktop/Github/QuantProjects/High\ frequency/High-Frequency-Trading-Strategy-Backtester/flashback/market/_match_cpp.so: CMakeFiles/_match_cpp.dir/pybind_module.cpp.o
+/Users/daryapylypenko/Desktop/Github/QuantProjects/High\ frequency/High-Frequency-Trading-Strategy-Backtester/flashback/market/_match_cpp.so: CMakeFiles/_match_cpp.dir/match_engine.cpp.o
+/Users/daryapylypenko/Desktop/Github/QuantProjects/High\ frequency/High-Frequency-Trading-Strategy-Backtester/flashback/market/_match_cpp.so: CMakeFiles/_match_cpp.dir/build.make
+/Users/daryapylypenko/Desktop/Github/QuantProjects/High\ frequency/High-Frequency-Trading-Strategy-Backtester/flashback/market/_match_cpp.so: CMakeFiles/_match_cpp.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/cpp/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX shared module \"/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/flashback/market/_match_cpp.so\""
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/_match_cpp.dir/link.txt --verbose=$(VERBOSE)
-	/usr/bin/strip -x /Users/daryapylypenko/Desktop/QuantProjects/high\ frequency/High-Frequency-Trading-Strategy-Backtester/flashback/market/_match_cpp.so
+	/usr/bin/strip -x /Users/daryapylypenko/Desktop/Github/QuantProjects/High\ frequency/High-Frequency-Trading-Strategy-Backtester/flashback/market/_match_cpp.so
 
 # Rule to build all files generated by this target.
-CMakeFiles/_match_cpp.dir/build: /Users/daryapylypenko/Desktop/QuantProjects/high\ frequency/High-Frequency-Trading-Strategy-Backtester/flashback/market/_match_cpp.so
+CMakeFiles/_match_cpp.dir/build: /Users/daryapylypenko/Desktop/Github/QuantProjects/High\ frequency/High-Frequency-Trading-Strategy-Backtester/flashback/market/_match_cpp.so
 .PHONY : CMakeFiles/_match_cpp.dir/build
 
 CMakeFiles/_match_cpp.dir/clean:
@@ -125,6 +125,6 @@ CMakeFiles/_match_cpp.dir/clean:
 .PHONY : CMakeFiles/_match_cpp.dir/clean
 
 CMakeFiles/_match_cpp.dir/depend:
-	cd "/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/cpp/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/cpp" "/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/cpp" "/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/cpp/build" "/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/cpp/build" "/Users/daryapylypenko/Desktop/QuantProjects/high frequency/High-Frequency-Trading-Strategy-Backtester/cpp/build/CMakeFiles/_match_cpp.dir/DependInfo.cmake" "--color=$(COLOR)"
+	cd "/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/cpp/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/cpp" "/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/cpp" "/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/cpp/build" "/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/cpp/build" "/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/cpp/build/CMakeFiles/_match_cpp.dir/DependInfo.cmake" "--color=$(COLOR)"
 .PHONY : CMakeFiles/_match_cpp.dir/depend
 
