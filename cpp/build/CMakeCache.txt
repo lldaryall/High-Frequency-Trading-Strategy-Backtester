@@ -387,17 +387,15 @@ _PYBIND11_CROSSCOMPILING:INTERNAL=OFF
 _Python:INTERNAL=Python
 //Compiler reason failure
 _Python_Compiler_REASON_FAILURE:INTERNAL=
-_Python_DEVELOPMENT_EMBED_SIGNATURE:INTERNAL=1937523b162aff84e0889b06a58de663
-_Python_DEVELOPMENT_MODULE_SIGNATURE:INTERNAL=8d4de7ff5a3e023ffa6927f397a57136
+_Python_DEVELOPMENT_EMBED_SIGNATURE:INTERNAL=fd3be6b0e01a8a7d0201f5422964fe24
+_Python_DEVELOPMENT_MODULE_SIGNATURE:INTERNAL=4daaaa8c021e3bf70edd6da25f88898c
 //Development reason failure
 _Python_Development_REASON_FAILURE:INTERNAL=
 _Python_EXECUTABLE:INTERNAL=/Users/daryapylypenko/.pyenv/versions/3.11.9/bin/python
-//Path to a file.
 _Python_INCLUDE_DIR:INTERNAL=/Users/daryapylypenko/.pyenv/versions/3.11.9/include/python3.11
 //Python Properties
 _Python_INTERPRETER_PROPERTIES:INTERNAL=Python;3;11;9;64;<none>;cpython-311-darwin;abi3;/Users/daryapylypenko/.pyenv/versions/3.11.9/lib/python3.11;/Users/daryapylypenko/.pyenv/versions/3.11.9/lib/python3.11;/Users/daryapylypenko/.pyenv/versions/3.11.9/lib/python3.11/site-packages;/Users/daryapylypenko/.pyenv/versions/3.11.9/lib/python3.11/site-packages
-_Python_INTERPRETER_SIGNATURE:INTERNAL=2222db043d6d83f018f6f140763ecc78
-//Path to a library.
+_Python_INTERPRETER_SIGNATURE:INTERNAL=3c626a89856355ec7b329029c3e4a283
 _Python_LIBRARY_RELEASE:INTERNAL=/Users/daryapylypenko/.pyenv/versions/3.11.9/lib/libpython3.11.dylib
 //NumPy reason failure
 _Python_NumPy_REASON_FAILURE:INTERNAL=

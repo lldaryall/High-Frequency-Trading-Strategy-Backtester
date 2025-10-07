@@ -7,8 +7,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Find Python and pybind11
 set(Python_EXECUTABLE "/Users/daryapylypenko/.pyenv/versions/3.11.9/bin/python")
+set(Python_ROOT_DIR "/Users/daryapylypenko/.pyenv/versions/3.11.9")
 set(Python_INCLUDE_DIRS "/Users/daryapylypenko/.pyenv/versions/3.11.9/include/python3.11")
 set(Python_LIBRARIES "/Users/daryapylypenko/.pyenv/versions/3.11.9/lib/libpython3.11.dylib")
+set(Python_LIBRARY "/Users/daryapylypenko/.pyenv/versions/3.11.9/lib/libpython3.11.dylib")
+set(Python_INCLUDE_DIR "/Users/daryapylypenko/.pyenv/versions/3.11.9/include/python3.11")
 find_package(Python COMPONENTS Interpreter Development REQUIRED)
 
 # Use the specific Python executable
