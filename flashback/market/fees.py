@@ -377,3 +377,47 @@ def create_exchange_fee_model(exchange: str) -> ExchangeFeeModel:
     }
     
     return ExchangeFeeModel(exchange, configs.get(exchange, {"*": FeeConfig()}))
+
+
+class FeeCalculator:
+    """Simple fee calculator for backward compatibility with tests."""
+    
+    def __init__(self, config: Optional[Dict] = None):
+        """Initialize fee calculator."""
+        self.commission_per_share = 0.001
+        self.commission_per_trade = 0.0
+        
+        # Use a simple basis points model
+        self.fee_model = BasisPointsFeeModel(
+            maker_bps=0.0,
+            taker_bps=0.0,
+            maker_per_share=self.commission_per_share,
+            taker_per_share=self.commission_per_share
+        )
+    
+    def calculate_fees(self, fill) -> Dict[str, float]:
+        """Calculate fees for a fill."""
+        if hasattr(fill, 'price') and hasattr(fill, 'size'):
+            # Convert MarketDataEvent to Fill if needed
+            from .orders import Fill, OrderSide
+            fill_obj = Fill(
+                order_id=getattr(fill, 'order_id', 'unknown'),
+                symbol=getattr(fill, 'symbol', 'UNKNOWN'),
+                side=OrderSide.BUY if getattr(fill, 'side', 'B') == 'B' else OrderSide.SELL,
+                price=fill.price,
+                size=fill.size,
+                timestamp=getattr(fill, 'timestamp', None)
+            )
+            fee = self.fee_model.calculate_fee(fill_obj)
+            return {'total': fee, 'commission': fee, 'slippage': 0.0}
+        return {'total': 0.0, 'commission': 0.0, 'slippage': 0.0}
+    
+    def calculate_commission(self, order) -> float:
+        """Calculate commission for an order."""
+        return order.size * self.commission_per_share + self.commission_per_trade
+    
+    def calculate_slippage(self, order, fill_price: float) -> float:
+        """Calculate slippage for an order."""
+        if order.order_type == OrderType.MARKET:
+            return abs(fill_price - order.price) * order.size
+        return 0.0

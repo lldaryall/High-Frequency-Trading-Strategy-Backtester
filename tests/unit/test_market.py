@@ -6,7 +6,6 @@ import numpy as np
 
 from flashback.market.book import MatchingEngine
 from flashback.market.orders import Order, OrderSide, OrderType
-from flashback.market.matching import MatchingEngine
 from flashback.market.fees import FeeCalculator
 from flashback.market.latency import LatencyModel
 from flashback.core.events import MarketDataEvent

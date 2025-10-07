@@ -327,7 +327,11 @@ class TestMeanReversionStrategy:
             # Create market data event
             book_update = MarketDataEvent(
                 timestamp=pd.Timestamp(1000 + i * 1000, unit='ns'),
-                event_type=EventType.MARKET_DATA,
+                symbol="AAPL",
+                side="B",
+                price=price,
+                size=1000,
+                event_type_str="TICK",
                 data={
                     'mid_price': price,
                     'volume': 1000

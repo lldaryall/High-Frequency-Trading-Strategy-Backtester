@@ -21,7 +21,6 @@ class EventType(Enum):
 class Event(ABC):
     """Base class for all events."""
     timestamp: pd.Timestamp
-    event_type: EventType
     
     @abstractmethod
     def to_dict(self) -> Dict[str, Any]:
@@ -37,10 +36,8 @@ class MarketDataEvent(Event):
     price: float
     size: int
     event_type_str: str  # 'TICK', 'L2_UPDATE', etc.
+    event_type: EventType = EventType.MARKET_DATA
     data: Optional[Dict[str, Any]] = None  # Additional market data
-    
-    def __post_init__(self) -> None:
-        self.event_type = EventType.MARKET_DATA
     
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -62,11 +59,9 @@ class OrderEvent(Event):
     side: str  # 'B' for buy, 'S' for sell
     order_type: str  # 'LIMIT', 'MARKET', 'IOC', 'FOK'
     quantity: int
+    event_type: EventType = EventType.ORDER
     price: Optional[float] = None
     time_in_force: str = "DAY"  # 'DAY', 'IOC', 'FOK'
-    
-    def __post_init__(self) -> None:
-        self.event_type = EventType.ORDER
     
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -90,11 +85,9 @@ class FillEvent(Event):
     side: str
     quantity: int
     price: float
+    event_type: EventType = EventType.FILL
     commission: float = 0.0
     latency_us: int = 0  # Latency in microseconds
-    
-    def __post_init__(self) -> None:
-        self.event_type = EventType.FILL
     
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -115,10 +108,8 @@ class CancelEvent(Event):
     """Cancel event for order cancellations."""
     order_id: str
     symbol: str
+    event_type: EventType = EventType.CANCEL
     reason: str = "USER_REQUEST"
-    
-    def __post_init__(self) -> None:
-        self.event_type = EventType.CANCEL
     
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -137,9 +128,7 @@ class RejectEvent(Event):
     symbol: str
     reason: str
     original_order: OrderEvent
-    
-    def __post_init__(self) -> None:
-        self.event_type = EventType.REJECT
+    event_type: EventType = EventType.REJECT
     
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -157,10 +146,8 @@ class TimerEvent(Event):
     """Timer event for scheduled tasks."""
     timer_id: str
     callback: str
+    event_type: EventType = EventType.TIMER
     data: Optional[Dict[str, Any]] = None
-    
-    def __post_init__(self) -> None:
-        self.event_type = EventType.TIMER
     
     def to_dict(self) -> Dict[str, Any]:
         return {
