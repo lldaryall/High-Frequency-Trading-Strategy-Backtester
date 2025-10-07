@@ -21,6 +21,7 @@ from ..strategy.momentum_imbalance import MomentumImbalanceStrategy, MomentumImb
 from ..risk.portfolio import PortfolioRiskManager
 from ..metrics.performance import PerformanceAnalyzer
 from ..exec.router import OrderRouter
+from ..reporting.reporter import BacktestReporter
 
 logger = logging.getLogger(__name__)
 
@@ -218,15 +219,28 @@ class BacktestRunner:
         # Calculate performance metrics
         performance_metrics = self.performance_analyzer.calculate_metrics()
         
-        # Create runs directory structure
-        run_dir = self._create_run_directory()
-        
-        # Save all required files
-        self._save_config_yaml(run_dir)
-        self._save_performance_files(run_dir, performance_metrics)
-        self._save_plots(run_dir, performance_metrics)
-        self._save_blotter_parquet(run_dir)
-        self._save_positions_parquet(run_dir)
+        # Create reporter and generate comprehensive report
+        reporter = BacktestReporter(self.config)
+        reporter.generate_report(
+            trades=self.trades,
+            positions=self.snapshots,
+            blotter=pd.DataFrame([{
+                'order_id': order_state.order.order_id,
+                'strategy_id': order_state.strategy_id,
+                'symbol': order_state.order.symbol,
+                'side': order_state.order.side.value,
+                'order_type': order_state.order.order_type.value,
+                'quantity': order_state.order.quantity,
+                'price': order_state.order.price,
+                'status': order_state.order.status.value,
+                'submitted_at': order_state.submitted_at,
+                'filled_at': order_state.filled_at,
+                'cancelled_at': order_state.cancelled_at,
+                'total_filled_qty': order_state.total_filled_qty,
+                'avg_fill_price': order_state.avg_fill_price
+            } for order_state in self.router.blotter.orders.values()]),
+            performance_metrics=performance_metrics
+        )
         
         # Compile results
         results = {
@@ -242,10 +256,10 @@ class BacktestRunner:
                 "strategy": self.config.strategy.name,
                 "symbol": self.config.strategy.symbol or "AAPL"
             },
-            "run_directory": str(run_dir)
+            "run_directory": str(reporter.output_dir)
         }
         
-        self.logger.info(f"Backtest completed successfully. Results saved to {run_dir}")
+        self.logger.info(f"Backtest completed successfully. Results saved to {reporter.output_dir}")
         return results
     
     def _create_run_directory(self) -> Path:
@@ -468,7 +482,7 @@ class BacktestRunner:
             # Create MarketDataEvent for book updates
             from ..core.events import MarketDataEvent
             market_event = MarketDataEvent(
-                event_type=EventType.DATA,
+                event_type=EventType.MARKET_DATA,
                 timestamp=pd.Timestamp(timestamp, unit='ns'),
                 symbol=symbol,
                 side=event_data["side"],

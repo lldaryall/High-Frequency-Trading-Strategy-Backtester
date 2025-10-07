@@ -24,6 +24,10 @@ make setup
 
 # Optional: Build C++ extension for maximum performance
 make cpp
+
+# Optional: Build Cython extensions for hot path optimization
+pip install -e ".[cython]"
+python setup_cython.py build_ext --inplace
 ```
 
 ### Basic Usage
@@ -173,6 +177,53 @@ make bench
 
 # Run CI benchmarks
 make ci-bench
+```
+
+## How to Reproduce
+
+The demo script provides a complete end-to-end demonstration of the Flashback HFT backtesting engine:
+
+```bash
+# Run the complete demo pipeline
+./scripts/demo.sh
+```
+
+**What the demo does:**
+1. **Setup**: Creates virtual environment and installs dependencies
+2. **Code Quality**: Runs linting and type checking
+3. **Data Generation**: Creates 200k synthetic market events with microprice process
+4. **Backtest**: Runs momentum imbalance strategy on synthetic data
+5. **Latency Analysis**: Performs sensitivity analysis across different latency levels
+6. **Packaging**: Creates compressed bundle of all results
+7. **Reporting**: Displays performance metrics and generated artifacts
+
+**Performance Target**: < 2 minutes runtime on 200k events
+
+**Generated Artifacts:**
+- `config.yaml`: Complete backtest configuration
+- `performance.json/csv`: Comprehensive performance metrics
+- `trades.csv`: Detailed trade history with PnL
+- `positions.csv`: Position tracking over time
+- `blotter.parquet`: Order book and execution data
+- `equity_curve.png`: Portfolio value over time
+- `drawdown_curve.png`: Drawdown analysis
+- `trade_pnl_histogram.png`: Trade PnL distribution
+- `performance_summary.png`: Key metrics visualization
+- `latency_sweep.csv`: Latency sensitivity results
+
+**Manual Steps:**
+```bash
+# Generate synthetic data
+python examples/generate_synthetic.py --seed 7 --events 200000
+
+# Run single backtest
+flashback run --config config/backtest.yaml
+
+# Run latency sensitivity analysis
+flashback sweep --config config/backtest.yaml --latency 100000,250000,500000
+
+# Package results
+flashback pack --run "$(ls -dt runs/* | head -n1)"
 ```
 
 ## Contributing

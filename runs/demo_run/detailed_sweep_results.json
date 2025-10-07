@@ -1,0 +1,225 @@
+{
+  "latency_values": [
+    100000,
+    250000,
+    500000,
+    1000000
+  ],
+  "results": [
+    {
+      "latency_ns": 100000,
+      "latency_model": "random",
+      "config_hash": "-441794463202146054",
+      "performance": {
+        "total_return": 0.0,
+        "annualized_return": 0.0,
+        "volatility": 0.0,
+        "sharpe_ratio": 0.0,
+        "max_drawdown": 0.0,
+        "max_drawdown_duration": 0,
+        "total_trades": 0,
+        "winning_trades": 0,
+        "losing_trades": 0,
+        "hit_rate": 0.0,
+        "avg_win": 0.0,
+        "avg_loss": 0.0,
+        "win_loss_ratio": 0.0,
+        "profit_factor": 0.0,
+        "turnover": 0.0,
+        "avg_position_size": 0.0,
+        "max_position_size": 0.0,
+        "mean_latency_ns": 0.0,
+        "p95_latency_ns": 0.0,
+        "p99_latency_ns": 0.0,
+        "var_95": 0.0,
+        "cvar_95": 0.0,
+        "calmar_ratio": 0,
+        "start_time": 1704101400000000000,
+        "end_time": 1704101401098800961,
+        "duration_days": 1.2717603715277779e-05,
+        "initial_capital": 1000000.0,
+        "final_capital": 1000000.0,
+        "total_fees": 0,
+        "total_slippage": 0.0
+      },
+      "summary": {
+        "total_events": 200000,
+        "total_trades": 0,
+        "total_snapshots": 200000,
+        "strategy": "momentum_imbalance",
+        "symbol": "AAPL"
+      }
+    },
+    {
+      "latency_ns": 250000,
+      "latency_model": "random",
+      "config_hash": "7786740338478798728",
+      "performance": {
+        "total_return": 0.0,
+        "annualized_return": 0.0,
+        "volatility": 0.0,
+        "sharpe_ratio": 0.0,
+        "max_drawdown": 0.0,
+        "max_drawdown_duration": 0,
+        "total_trades": 0,
+        "winning_trades": 0,
+        "losing_trades": 0,
+        "hit_rate": 0.0,
+        "avg_win": 0.0,
+        "avg_loss": 0.0,
+        "win_loss_ratio": 0.0,
+        "profit_factor": 0.0,
+        "turnover": 0.0,
+        "avg_position_size": 0.0,
+        "max_position_size": 0.0,
+        "mean_latency_ns": 0.0,
+        "p95_latency_ns": 0.0,
+        "p99_latency_ns": 0.0,
+        "var_95": 0.0,
+        "cvar_95": 0.0,
+        "calmar_ratio": 0,
+        "start_time": 1704101400000000000,
+        "end_time": 1704101401098800961,
+        "duration_days": 1.2717603715277779e-05,
+        "initial_capital": 1000000.0,
+        "final_capital": 1000000.0,
+        "total_fees": 0,
+        "total_slippage": 0.0
+      },
+      "summary": {
+        "total_events": 200000,
+        "total_trades": 0,
+        "total_snapshots": 200000,
+        "strategy": "momentum_imbalance",
+        "symbol": "AAPL"
+      }
+    },
+    {
+      "latency_ns": 500000,
+      "latency_model": "random",
+      "config_hash": "-296411945420999706",
+      "performance": {
+        "total_return": 0.0,
+        "annualized_return": 0.0,
+        "volatility": 0.0,
+        "sharpe_ratio": 0.0,
+        "max_drawdown": 0.0,
+        "max_drawdown_duration": 0,
+        "total_trades": 0,
+        "winning_trades": 0,
+        "losing_trades": 0,
+        "hit_rate": 0.0,
+        "avg_win": 0.0,
+        "avg_loss": 0.0,
+        "win_loss_ratio": 0.0,
+        "profit_factor": 0.0,
+        "turnover": 0.0,
+        "avg_position_size": 0.0,
+        "max_position_size": 0.0,
+        "mean_latency_ns": 0.0,
+        "p95_latency_ns": 0.0,
+        "p99_latency_ns": 0.0,
+        "var_95": 0.0,
+        "cvar_95": 0.0,
+        "calmar_ratio": 0,
+        "start_time": 1704101400000000000,
+        "end_time": 1704101401098800961,
+        "duration_days": 1.2717603715277779e-05,
+        "initial_capital": 1000000.0,
+        "final_capital": 1000000.0,
+        "total_fees": 0,
+        "total_slippage": 0.0
+      },
+      "summary": {
+        "total_events": 200000,
+        "total_trades": 0,
+        "total_snapshots": 200000,
+        "strategy": "momentum_imbalance",
+        "symbol": "AAPL"
+      }
+    },
+    {
+      "latency_ns": 1000000,
+      "latency_model": "random",
+      "config_hash": "-6985313732025267440",
+      "performance": {
+        "total_return": 0.0,
+        "annualized_return": 0.0,
+        "volatility": 0.0,
+        "sharpe_ratio": 0.0,
+        "max_drawdown": 0.0,
+        "max_drawdown_duration": 0,
+        "total_trades": 0,
+        "winning_trades": 0,
+        "losing_trades": 0,
+        "hit_rate": 0.0,
+        "avg_win": 0.0,
+        "avg_loss": 0.0,
+        "win_loss_ratio": 0.0,
+        "profit_factor": 0.0,
+        "turnover": 0.0,
+        "avg_position_size": 0.0,
+        "max_position_size": 0.0,
+        "mean_latency_ns": 0.0,
+        "p95_latency_ns": 0.0,
+        "p99_latency_ns": 0.0,
+        "var_95": 0.0,
+        "cvar_95": 0.0,
+        "calmar_ratio": 0,
+        "start_time": 1704101400000000000,
+        "end_time": 1704101401098800961,
+        "duration_days": 1.2717603715277779e-05,
+        "initial_capital": 1000000.0,
+        "final_capital": 1000000.0,
+        "total_fees": 0,
+        "total_slippage": 0.0
+      },
+      "summary": {
+        "total_events": 200000,
+        "total_trades": 0,
+        "total_snapshots": 200000,
+        "strategy": "momentum_imbalance",
+        "symbol": "AAPL"
+      }
+    }
+  ],
+  "sensitivity_analysis": {
+    "correlations": {
+      "total_return": NaN,
+      "sharpe_ratio": NaN,
+      "max_drawdown": NaN
+    },
+    "sensitivity_per_us": {
+      "total_return": 0.0,
+      "sharpe_ratio": 0.0
+    },
+    "degradation_pct": {
+      "total_return": 0.0,
+      "sharpe_ratio": 0.0
+    },
+    "latency_range_ns": {
+      "min": 100000,
+      "max": 1000000,
+      "range": 900000
+    },
+    "performance_range": {
+      "total_return": {
+        "min": 0.0,
+        "max": 0.0
+      },
+      "sharpe_ratio": {
+        "min": 0.0,
+        "max": 0.0
+      },
+      "max_drawdown": {
+        "min": 0.0,
+        "max": 0.0
+      }
+    }
+  },
+  "summary": {
+    "total_runs": 4,
+    "latency_range": "100000ns - 1000000ns",
+    "base_strategy": "momentum_imbalance"
+  }
+}

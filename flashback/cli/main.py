@@ -9,7 +9,7 @@ from typing import List, Optional
 from ..config import load_config
 from .runner import BacktestRunner
 from .sweeper import LatencySweeper
-from .pack import RunPacker
+from .pack import create_run_bundle
 
 logger = logging.getLogger(__name__)
 
@@ -93,11 +93,8 @@ def pack_command(args) -> int:
         # Setup logging
         setup_logging(args.verbose)
         
-        # Create packer
-        packer = RunPacker()
-        
         # Pack the run
-        output_path = packer.pack_run(args.run, args.output)
+        output_path = create_run_bundle(str(args.run), str(args.output) if args.output else None)
         
         logger.info(f"Successfully packed run to: {output_path}")
         return 0

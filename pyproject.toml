@@ -40,6 +40,9 @@ dev = [
     "mypy>=1.0.0",
     "flake8>=6.0.0",
 ]
+cython = [
+    "cython>=0.29.0",
+]
 
 [project.scripts]
 flashback = "flashback.cli.main:cli"

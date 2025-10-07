@@ -1,0 +1,2 @@
+[console_scripts]
+flashback = flashback.cli.main:cli

@@ -1,0 +1,45 @@
+name: "Demo Backtest"
+description: "Flashback HFT Demo with Momentum Strategy"
+
+data:
+  path: "examples/sample_data/aapl_l1.parquet"
+  kind: "book"
+  symbol: "AAPL"
+
+strategy:
+  name: "momentum_imbalance"
+  symbol: "AAPL"
+  enabled: true
+  max_position: 1000
+  max_order_size: 100
+  params:
+    short_ema_period: 5
+    long_ema_period: 20
+    imbalance_threshold: 0.3
+    take_profit_pct: 0.02
+    stop_loss_pct: 0.01
+    min_trade_size: 10
+    max_trade_size: 100
+
+execution:
+  fees:
+    maker_bps: 0.0
+    taker_bps: 0.5
+    per_share: 0.0
+  latency:
+    model: "normal"
+    mean_ns: 500000
+    std_ns: 100000
+    seed: 42
+
+risk:
+  max_gross: 100000
+  max_pos_per_symbol: 1000
+  max_daily_loss: -2000
+
+report:
+  output_dir: "runs/demo_run"
+  format: "both"
+  plots: true
+  detailed_trades: true
+  performance_metrics: true

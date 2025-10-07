@@ -1,269 +1,238 @@
-"""Packaging utility for backtest runs."""
+"""
+Pack command for creating run bundles.
 
-import argparse
+This module provides functionality to package backtest results into compressed
+archives for easy sharing and storage.
+"""
+
+import click
 import zipfile
+import json
 import shutil
 from pathlib import Path
-from typing import Optional
-import logging
-
-logger = logging.getLogger(__name__)
+from typing import List, Optional
+from datetime import datetime
 
 
-class RunPacker:
-    """Utility for packaging backtest run directories."""
+def create_run_bundle(run_dir: str, output_path: Optional[str] = None) -> str:
+    """Create a compressed bundle of a backtest run.
     
-    def __init__(self):
-        """Initialize the run packer."""
-        self.logger = logging.getLogger(__name__)
+    Args:
+        run_dir: Path to the run directory
+        output_path: Optional output path for the bundle
+        
+    Returns:
+        Path to the created bundle file
+    """
+    run_path = Path(run_dir)
     
-    def pack_run(self, run_path: Path, output_path: Optional[Path] = None) -> Path:
-        """
-        Pack a run directory into a zip file.
-        
-        Args:
-            run_path: Path to the run directory
-            output_path: Optional output path for the zip file
-            
-        Returns:
-            Path to the created zip file
-        """
-        if not run_path.exists():
-            raise FileNotFoundError(f"Run directory not found: {run_path}")
-        
-        if not run_path.is_dir():
-            raise ValueError(f"Path is not a directory: {run_path}")
-        
-        # Determine output path
-        if output_path is None:
-            output_path = run_path.parent / f"{run_path.name}.zip"
-        
-        self.logger.info(f"Packing run directory: {run_path}")
-        self.logger.info(f"Output zip file: {output_path}")
-        
-        # Create zip file
-        with zipfile.ZipFile(output_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
-            self._add_directory_to_zip(zipf, run_path, run_path.name)
-        
-        # Verify the zip file was created
-        if not output_path.exists():
-            raise RuntimeError(f"Failed to create zip file: {output_path}")
-        
-        # Log file sizes
-        run_size = self._get_directory_size(run_path)
-        zip_size = output_path.stat().st_size
-        compression_ratio = (1 - zip_size / run_size) * 100 if run_size > 0 else 0
-        
-        self.logger.info(f"Packing completed successfully")
-        self.logger.info(f"Original size: {self._format_size(run_size)}")
-        self.logger.info(f"Compressed size: {self._format_size(zip_size)}")
-        self.logger.info(f"Compression ratio: {compression_ratio:.1f}%")
-        
-        return output_path
+    if not run_path.exists():
+        raise FileNotFoundError(f"Run directory not found: {run_dir}")
     
-    def _add_directory_to_zip(self, zipf: zipfile.ZipFile, directory: Path, arcname: str):
-        """Recursively add directory contents to zip file."""
-        for item in directory.rglob('*'):
-            if item.is_file():
-                # Calculate relative path for archive
-                arc_path = item.relative_to(directory.parent)
-                zipf.write(item, arc_path)
-                self.logger.debug(f"Added: {arc_path}")
+    if not run_path.is_dir():
+        raise ValueError(f"Path is not a directory: {run_dir}")
     
-    def _get_directory_size(self, directory: Path) -> int:
-        """Calculate total size of directory contents."""
-        total_size = 0
-        for item in directory.rglob('*'):
-            if item.is_file():
-                total_size += item.stat().st_size
-        return total_size
+    # Generate output filename if not provided
+    if output_path is None:
+        timestamp = run_path.name
+        output_path = f"runs/{timestamp}.zip"
     
-    def _format_size(self, size_bytes: int) -> str:
-        """Format size in human-readable format."""
-        for unit in ['B', 'KB', 'MB', 'GB']:
-            if size_bytes < 1024.0:
-                return f"{size_bytes:.1f} {unit}"
-            size_bytes /= 1024.0
-        return f"{size_bytes:.1f} TB"
+    output_path = Path(output_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
     
-    def list_run_contents(self, run_path: Path) -> dict:
-        """
-        List contents of a run directory.
-        
-        Args:
-            run_path: Path to the run directory
-            
-        Returns:
-            Dictionary with file information
-        """
-        if not run_path.exists():
-            raise FileNotFoundError(f"Run directory not found: {run_path}")
-        
-        contents = {
-            'files': [],
-            'total_size': 0,
-            'file_count': 0
-        }
-        
-        for item in run_path.rglob('*'):
-            if item.is_file():
-                file_info = {
-                    'path': str(item.relative_to(run_path)),
-                    'size': item.stat().st_size,
-                    'size_formatted': self._format_size(item.stat().st_size)
-                }
-                contents['files'].append(file_info)
-                contents['total_size'] += file_info['size']
-                contents['file_count'] += 1
-        
-        contents['total_size_formatted'] = self._format_size(contents['total_size'])
-        return contents
+    # Create zip file
+    with zipfile.ZipFile(output_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
+        # Add all files in the run directory
+        for file_path in run_path.rglob('*'):
+            if file_path.is_file():
+                # Add file with relative path
+                arcname = file_path.relative_to(run_path.parent)
+                zipf.write(file_path, arcname)
     
-    def validate_run_directory(self, run_path: Path) -> dict:
-        """
-        Validate that a run directory contains all required files.
-        
-        Args:
-            run_path: Path to the run directory
-            
-        Returns:
-            Dictionary with validation results
-        """
-        required_files = [
-            'config.yaml',
-            'performance.json',
-            'performance.csv',
-            'blotter.parquet',
-            'positions.parquet'
-        ]
-        
-        optional_files = [
-            'equity_curve.png',
-            'drawdown.png',
-            'trade_pnl_hist.png',
-            'latency_sweep.csv'
-        ]
-        
-        validation = {
-            'valid': True,
-            'missing_required': [],
-            'missing_optional': [],
-            'present_files': [],
-            'errors': []
-        }
-        
-        if not run_path.exists():
-            validation['valid'] = False
-            validation['errors'].append(f"Directory does not exist: {run_path}")
-            return validation
-        
-        if not run_path.is_dir():
-            validation['valid'] = False
-            validation['errors'].append(f"Path is not a directory: {run_path}")
-            return validation
-        
-        # Check required files
-        for file_name in required_files:
-            file_path = run_path / file_name
-            if file_path.exists():
-                validation['present_files'].append(file_name)
-            else:
-                validation['missing_required'].append(file_name)
-                validation['valid'] = False
-        
-        # Check optional files
-        for file_name in optional_files:
-            file_path = run_path / file_name
-            if file_path.exists():
-                validation['present_files'].append(file_name)
-            else:
-                validation['missing_optional'].append(file_name)
-        
-        return validation
+    return str(output_path)
 
 
-def main():
-    """Main function for CLI usage."""
-    parser = argparse.ArgumentParser(description="Pack backtest run directories")
-    parser.add_argument("--run", required=True, type=Path, 
-                       help="Path to run directory (e.g., runs/2025-10-06T00-00-00)")
-    parser.add_argument("--output", "-o", type=Path, 
-                       help="Output zip file path (default: run_directory.zip)")
-    parser.add_argument("--list", "-l", action="store_true",
-                       help="List contents of run directory")
-    parser.add_argument("--validate", "-v", action="store_true",
-                       help="Validate run directory structure")
-    parser.add_argument("--verbose", action="store_true",
-                       help="Enable verbose logging")
+def list_run_directories(runs_dir: str = "runs") -> List[str]:
+    """List available run directories.
     
-    args = parser.parse_args()
+    Args:
+        runs_dir: Path to the runs directory
+        
+    Returns:
+        List of run directory names, sorted by timestamp (newest first)
+    """
+    runs_path = Path(runs_dir)
     
-    # Configure logging
-    log_level = logging.DEBUG if args.verbose else logging.INFO
-    logging.basicConfig(
-        level=log_level,
-        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-    )
+    if not runs_path.exists():
+        return []
     
-    packer = RunPacker()
+    # Get all directories that look like timestamps
+    run_dirs = []
+    for item in runs_path.iterdir():
+        if item.is_dir() and not item.name.endswith('_sweep'):
+            try:
+                # Try to parse as timestamp
+                datetime.fromisoformat(item.name.replace('T', ' ').replace('-', ':'))
+                run_dirs.append(item.name)
+            except ValueError:
+                continue
+    
+    # Sort by timestamp (newest first)
+    run_dirs.sort(reverse=True)
+    return run_dirs
+
+
+@click.command()
+@click.option('--run', '-r', help='Run directory to pack (timestamp or path)')
+@click.option('--output', '-o', help='Output path for the bundle')
+@click.option('--list', '-l', 'list_runs', is_flag=True, help='List available runs')
+@click.option('--latest', is_flag=True, help='Pack the latest run')
+def pack(run: Optional[str], output: Optional[str], list_runs: bool, latest: bool):
+    """Pack backtest results into a compressed bundle.
+    
+    Examples:
+        flashback pack --list                    # List available runs
+        flashback pack --latest                  # Pack the latest run
+        flashback pack --run 2025-10-06T00-00-00 # Pack specific run
+        flashback pack --run runs/2025-10-06T00-00-00 --output my_results.zip
+    """
+    if list_runs:
+        runs = list_run_directories()
+        if not runs:
+            click.echo("No runs found in runs/ directory")
+            return
+        
+        click.echo("Available runs:")
+        for run_name in runs:
+            run_path = Path("runs") / run_name
+            if run_path.exists():
+                # Get run info
+                config_file = run_path / "config.yaml"
+                performance_file = run_path / "performance.json"
+                
+                info = []
+                if config_file.exists():
+                    info.append("config")
+                if performance_file.exists():
+                    info.append("results")
+                
+                info_str = f" ({', '.join(info)})" if info else ""
+                click.echo(f"  {run_name}{info_str}")
+        
+        return
+    
+    # Determine which run to pack
+    if latest:
+        runs = list_run_directories()
+        if not runs:
+            click.echo("No runs found in runs/ directory")
+            return
+        run = runs[0]  # Latest run
+        click.echo(f"Packing latest run: {run}")
+    
+    if not run:
+        click.echo("Error: Must specify --run, --latest, or --list")
+        return
+    
+    # Resolve run path
+    if Path(run).is_absolute() or run.startswith('runs/'):
+        run_path = run
+    else:
+        run_path = f"runs/{run}"
     
     try:
-        if args.list:
-            # List contents
-            contents = packer.list_run_contents(args.run)
-            print(f"\nContents of {args.run}:")
-            print(f"Total files: {contents['file_count']}")
-            print(f"Total size: {contents['total_size_formatted']}")
-            print("\nFiles:")
-            for file_info in contents['files']:
-                print(f"  {file_info['path']:<30} {file_info['size_formatted']:>10}")
+        # Create bundle
+        bundle_path = create_run_bundle(run_path, output)
         
-        elif args.validate:
-            # Validate structure
-            validation = packer.validate_run_directory(args.run)
-            print(f"\nValidation of {args.run}:")
-            print(f"Valid: {validation['valid']}")
-            
-            if validation['present_files']:
-                print(f"\nPresent files ({len(validation['present_files'])}):")
-                for file_name in validation['present_files']:
-                    print(f"  ✓ {file_name}")
-            
-            if validation['missing_required']:
-                print(f"\nMissing required files ({len(validation['missing_required'])}):")
-                for file_name in validation['missing_required']:
-                    print(f"  ✗ {file_name}")
-            
-            if validation['missing_optional']:
-                print(f"\nMissing optional files ({len(validation['missing_optional'])}):")
-                for file_name in validation['missing_optional']:
-                    print(f"  ? {file_name}")
-            
-            if validation['errors']:
-                print(f"\nErrors:")
-                for error in validation['errors']:
-                    print(f"  ✗ {error}")
+        # Get bundle size
+        bundle_size = Path(bundle_path).stat().st_size
+        bundle_size_mb = bundle_size / (1024 * 1024)
         
-        else:
-            # Pack the run
-            output_path = packer.pack_run(args.run, args.output)
-            print(f"\nSuccessfully packed run to: {output_path}")
-            
-            # Show validation
-            validation = packer.validate_run_directory(args.run)
-            if validation['valid']:
-                print("✓ Run directory is valid")
-            else:
-                print("⚠ Run directory has missing files:")
-                for file_name in validation['missing_required']:
-                    print(f"  ✗ {file_name}")
-    
+        click.echo(f"✅ Created bundle: {bundle_path}")
+        click.echo(f"📦 Bundle size: {bundle_size_mb:.2f} MB")
+        
+        # Show contents
+        with zipfile.ZipFile(bundle_path, 'r') as zipf:
+            files = zipf.namelist()
+            click.echo(f"📁 Contains {len(files)} files:")
+            for file in sorted(files)[:10]:  # Show first 10 files
+                click.echo(f"   {file}")
+            if len(files) > 10:
+                click.echo(f"   ... and {len(files) - 10} more files")
+        
     except Exception as e:
-        logger.error(f"Error: {e}")
-        return 1
+        click.echo(f"❌ Error creating bundle: {e}")
+        raise click.Abort()
+
+
+def extract_run_bundle(bundle_path: str, extract_dir: Optional[str] = None) -> str:
+    """Extract a run bundle.
     
-    return 0
+    Args:
+        bundle_path: Path to the bundle file
+        extract_dir: Directory to extract to (default: runs/)
+        
+    Returns:
+        Path to the extracted directory
+    """
+    bundle_path = Path(bundle_path)
+    
+    if not bundle_path.exists():
+        raise FileNotFoundError(f"Bundle not found: {bundle_path}")
+    
+    if extract_dir is None:
+        extract_dir = "runs"
+    
+    extract_path = Path(extract_dir)
+    extract_path.mkdir(parents=True, exist_ok=True)
+    
+    # Extract bundle
+    with zipfile.ZipFile(bundle_path, 'r') as zipf:
+        zipf.extractall(extract_path)
+    
+    # Find the extracted run directory
+    for item in extract_path.iterdir():
+        if item.is_dir() and not item.name.endswith('_sweep'):
+            try:
+                # Try to parse as timestamp
+                datetime.fromisoformat(item.name.replace('T', ' ').replace('-', ':'))
+                return str(item)
+            except ValueError:
+                continue
+    
+    raise ValueError("Could not find run directory in extracted bundle")
+
+
+@click.command()
+@click.argument('bundle_path')
+@click.option('--extract-dir', '-d', help='Directory to extract to')
+def unpack(bundle_path: str, extract_dir: Optional[str]):
+    """Extract a backtest run bundle.
+    
+    Examples:
+        flashback unpack results.zip
+        flashback unpack results.zip --extract-dir my_runs/
+    """
+    try:
+        extracted_path = extract_run_bundle(bundle_path, extract_dir)
+        click.echo(f"✅ Extracted bundle to: {extracted_path}")
+        
+        # Show contents
+        run_path = Path(extracted_path)
+        files = list(run_path.iterdir())
+        click.echo(f"📁 Extracted {len(files)} items:")
+        for file in sorted(files):
+            if file.is_file():
+                size = file.stat().st_size
+                size_str = f" ({size:,} bytes)" if size < 1024 else f" ({size/1024:.1f} KB)"
+                click.echo(f"   {file.name}{size_str}")
+            else:
+                click.echo(f"   {file.name}/")
+        
+    except Exception as e:
+        click.echo(f"❌ Error extracting bundle: {e}")
+        raise click.Abort()
 
 
 if __name__ == "__main__":
-    exit(main())
+    pack()

@@ -1,0 +1,1 @@
+order_id,strategy_id,symbol,side,order_type,quantity,price,status,submitted_at,filled_at,cancelled_at,total_filled_qty,avg_fill_price
