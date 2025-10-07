@@ -25,7 +25,7 @@ jobs:
     - name: Install system dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y cmake build-essential
+        sudo apt-get install -y cmake build-essential python3-dev python3-distutils
     
     - name: Cache C++ build artifacts
       uses: actions/cache@v4

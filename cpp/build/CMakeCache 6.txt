@@ -28,7 +28,7 @@ CMAKE_BUILD_TYPE:STRING=Release
 CMAKE_COLOR_MAKEFILE:BOOL=ON
 
 //CXX compiler
-CMAKE_CXX_COMPILER:STRING=/usr/bin/c++
+CMAKE_CXX_COMPILER:FILEPATH=/usr/bin/c++
 
 //Flags used by the CXX compiler during all build types.
 CMAKE_CXX_FLAGS:STRING=
@@ -46,7 +46,7 @@ CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
 CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 
 //C compiler
-CMAKE_C_COMPILER:STRING=/usr/bin/cc
+CMAKE_C_COMPILER:FILEPATH=/usr/bin/cc
 
 //Flags used by the C compiler during all build types.
 CMAKE_C_FLAGS:STRING=
@@ -225,9 +225,6 @@ flashback_cpp_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 flashback_cpp_SOURCE_DIR:STATIC=/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/cpp
 
-//The directory containing a CMake configuration file for pybind11.
-pybind11_DIR:PATH=pybind11_DIR-NOTFOUND
-
 
 ########################
 # INTERNAL cache entries
@@ -375,7 +372,7 @@ CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding Python
-FIND_PACKAGE_MESSAGE_DETAILS_Python:INTERNAL=[/Users/daryapylypenko/.pyenv/versions/3.11.9/bin/python][/Users/daryapylypenko/.pyenv/versions/3.11.9/include/python3.11][/Users/daryapylypenko/.pyenv/versions/3.11.9/lib/libpython3.11.dylib][found components: Interpreter Development Development.Module Development.Embed ][v3.11.9()]
+FIND_PACKAGE_MESSAGE_DETAILS_Python:INTERNAL=[/Library/Frameworks/Python.framework/Versions/3.13/bin/python3.13][/Library/Frameworks/Python.framework/Versions/3.13/include/python3.13][/Library/Frameworks/Python.framework/Versions/3.13/lib/libpython3.13.dylib][found components: Interpreter Development Development.Module Development.Embed ][v3.13.2()]
 //Test HAS_FLTO
 HAS_FLTO:INTERNAL=1
 //Test HAS_FLTO_THIN
@@ -390,18 +387,21 @@ _PYBIND11_CROSSCOMPILING:INTERNAL=OFF
 _Python:INTERNAL=Python
 //Compiler reason failure
 _Python_Compiler_REASON_FAILURE:INTERNAL=
-_Python_DEVELOPMENT_EMBED_SIGNATURE:INTERNAL=fd3be6b0e01a8a7d0201f5422964fe24
-_Python_DEVELOPMENT_MODULE_SIGNATURE:INTERNAL=4daaaa8c021e3bf70edd6da25f88898c
+_Python_DEVELOPMENT_EMBED_SIGNATURE:INTERNAL=581763c6c0925b85df1bfb098ce49c4f
+_Python_DEVELOPMENT_MODULE_SIGNATURE:INTERNAL=6e20ed36b9d6395a620ea21caf9c4fbf
 //Development reason failure
 _Python_Development_REASON_FAILURE:INTERNAL=
-_Python_EXECUTABLE:INTERNAL=/Users/daryapylypenko/.pyenv/versions/3.11.9/bin/python
-_Python_INCLUDE_DIR:INTERNAL=/Users/daryapylypenko/.pyenv/versions/3.11.9/include/python3.11
+//Path to a program.
+_Python_EXECUTABLE:INTERNAL=/Library/Frameworks/Python.framework/Versions/3.13/bin/python3.13
+//Path to a file.
+_Python_INCLUDE_DIR:INTERNAL=/Library/Frameworks/Python.framework/Versions/3.13/include/python3.13
 //Python Properties
-_Python_INTERPRETER_PROPERTIES:INTERNAL=Python;3;11;9;64;<none>;cpython-311-darwin;abi3;/Users/daryapylypenko/.pyenv/versions/3.11.9/lib/python3.11;/Users/daryapylypenko/.pyenv/versions/3.11.9/lib/python3.11;/Users/daryapylypenko/.pyenv/versions/3.11.9/lib/python3.11/site-packages;/Users/daryapylypenko/.pyenv/versions/3.11.9/lib/python3.11/site-packages
-_Python_INTERPRETER_SIGNATURE:INTERNAL=3c626a89856355ec7b329029c3e4a283
-_Python_LIBRARY_RELEASE:INTERNAL=/Users/daryapylypenko/.pyenv/versions/3.11.9/lib/libpython3.11.dylib
+_Python_INTERPRETER_PROPERTIES:INTERNAL=Python;3;13;2;64;<none>;cpython-313-darwin;abi3;/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13;/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13;/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages;/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages
+_Python_INTERPRETER_SIGNATURE:INTERNAL=9e6912d89a4d0d3afbdf9e7744974145
+//Path to a library.
+_Python_LIBRARY_RELEASE:INTERNAL=/Library/Frameworks/Python.framework/Versions/3.13/lib/libpython3.13.dylib
 //NumPy reason failure
 _Python_NumPy_REASON_FAILURE:INTERNAL=
 //Directories where pybind11 and possibly Python headers are located
-pybind11_INCLUDE_DIRS:INTERNAL=/Users/daryapylypenko/.pyenv/versions/3.11.9/lib/python3.11/site-packages/pybind11/include;/Users/daryapylypenko/.pyenv/versions/3.11.9/include/python3.11
+pybind11_INCLUDE_DIRS:INTERNAL=/Users/daryapylypenko/.pyenv/versions/3.11.9/lib/python3.11/site-packages/pybind11/include;/Library/Frameworks/Python.framework/Versions/3.13/include/python3.13
 
