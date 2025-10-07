@@ -41,7 +41,7 @@ Transaction costs, slippage, and fees are integrated into fill generation for re
 
 ## Important Limitations
 
-⚠️ **This is a backtesting engine, not a production trading system**
+ **This is a backtesting engine, not a production trading system**
 
 - Uses synthetic data that may not reflect real market conditions
 - Simplified models may not capture all market nuances

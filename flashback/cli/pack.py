@@ -148,20 +148,20 @@ def pack(run: Optional[str], output: Optional[str], list_runs: bool, latest: boo
         bundle_size = Path(bundle_path).stat().st_size
         bundle_size_mb = bundle_size / (1024 * 1024)
         
-        click.echo(f"✅ Created bundle: {bundle_path}")
-        click.echo(f"📦 Bundle size: {bundle_size_mb:.2f} MB")
+        click.echo(f" Created bundle: {bundle_path}")
+        click.echo(f" Bundle size: {bundle_size_mb:.2f} MB")
         
         # Show contents
         with zipfile.ZipFile(bundle_path, 'r') as zipf:
             files = zipf.namelist()
-            click.echo(f"📁 Contains {len(files)} files:")
+            click.echo(f" Contains {len(files)} files:")
             for file in sorted(files)[:10]:  # Show first 10 files
                 click.echo(f"   {file}")
             if len(files) > 10:
                 click.echo(f"   ... and {len(files) - 10} more files")
         
     except Exception as e:
-        click.echo(f"❌ Error creating bundle: {e}")
+        click.echo(f" Error creating bundle: {e}")
         raise click.Abort()
 
 
@@ -215,12 +215,12 @@ def unpack(bundle_path: str, extract_dir: Optional[str]):
     """
     try:
         extracted_path = extract_run_bundle(bundle_path, extract_dir)
-        click.echo(f"✅ Extracted bundle to: {extracted_path}")
+        click.echo(f" Extracted bundle to: {extracted_path}")
         
         # Show contents
         run_path = Path(extracted_path)
         files = list(run_path.iterdir())
-        click.echo(f"📁 Extracted {len(files)} items:")
+        click.echo(f" Extracted {len(files)} items:")
         for file in sorted(files):
             if file.is_file():
                 size = file.stat().st_size
@@ -230,7 +230,7 @@ def unpack(bundle_path: str, extract_dir: Optional[str]):
                 click.echo(f"   {file.name}/")
         
     except Exception as e:
-        click.echo(f"❌ Error extracting bundle: {e}")
+        click.echo(f" Error extracting bundle: {e}")
         raise click.Abort()
 
 

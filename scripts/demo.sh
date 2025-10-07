@@ -5,7 +5,7 @@ set -euo pipefail
 # This script demonstrates the complete pipeline from data generation to results packaging
 # Target runtime: < 2 minutes on 200k events
 
-echo "🚀 Flashback HFT Backtesting Engine - Demo"
+echo "Flashback HFT Backtesting Engine - Demo"
 echo "=========================================="
 echo ""
 
@@ -214,12 +214,12 @@ echo "=========================="
 # Find the latest run directory
 latest_run=$(ls -dt runs/*/ | head -n1 | sed 's|/$||')
 if [ -n "$latest_run" ]; then
-    echo "📁 Run Directory: $latest_run"
+    echo " Run Directory: $latest_run"
     
     # Display performance metrics if available
     if [ -f "$latest_run/performance.json" ]; then
         echo ""
-        echo "📊 Performance Metrics:"
+        echo " Performance Metrics:"
         python3 -c "
 import json
 import sys
@@ -240,16 +240,16 @@ except Exception as e:
     
     # List generated files
     echo ""
-    echo "📄 Generated Files:"
+    echo " Generated Files:"
     ls -la "$latest_run" | grep -E '\.(json|csv|png|parquet|yaml)$' | awk '{print "   " $9 " (" $5 " bytes)"}'
     
     # Check for plots
     plot_count=$(find "$latest_run" -name "*.png" | wc -l)
-    echo "   📈 Generated $plot_count visualization plots"
+    echo "    Generated $plot_count visualization plots"
     
     # Check for latency sweep results
     if [ -f "$latest_run/latency_sweep.csv" ]; then
-        echo "   🔄 Latency sensitivity analysis completed"
+        echo "    Latency sensitivity analysis completed"
     fi
 fi
 
@@ -257,26 +257,26 @@ fi
 total_duration=$(echo "$(date +%s.%N) - $setup_start" | bc -l)
 
 echo ""
-echo "🎉 Demo completed successfully!"
-echo "⏱️  Total execution time: $(printf "%.2f" $total_duration)s"
+echo " Demo completed successfully!"
+echo "  Total execution time: $(printf "%.2f" $total_duration)s"
 
 # Performance check
 if (( $(echo "$total_duration < 120" | bc -l) )); then
-    print_success "✅ Performance target met: < 2 minutes"
+    print_success " Performance target met: < 2 minutes"
 else
-    print_warning "⚠️  Performance target missed: > 2 minutes"
+    print_warning "  Performance target missed: > 2 minutes"
 fi
 
 echo ""
-echo "📚 Next Steps:"
+echo " Next Steps:"
 echo "   1. Explore the generated plots in $latest_run"
 echo "   2. Analyze performance metrics in performance.json"
 echo "   3. Review trade data in trades.csv"
 echo "   4. Try different strategy parameters"
 echo "   5. Run with larger datasets for more comprehensive analysis"
 echo ""
-echo "🔗 Documentation: docs/architecture.md"
-echo "📖 Examples: examples/notebooks/01_quickstart.ipynb"
+echo " Documentation: docs/architecture.md"
+echo " Examples: examples/notebooks/01_quickstart.ipynb"
 echo ""
 
 # Optional: Open results directory (macOS)
@@ -288,4 +288,4 @@ if command_exists open && [[ "$OSTYPE" == "darwin"* ]]; then
     fi
 fi
 
-print_success "Demo completed successfully! 🚀"
+print_success "Demo completed successfully! "

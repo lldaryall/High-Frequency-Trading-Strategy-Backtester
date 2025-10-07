@@ -148,7 +148,7 @@ report:
         assert isinstance(blotter_df, pd.DataFrame), "Blotter is not a DataFrame"
         assert isinstance(positions_df, pd.DataFrame), "Positions is not a DataFrame"
         
-        print(f"✅ Single backtest created proper runs directory: {run_dir}")
+        print(f" Single backtest created proper runs directory: {run_dir}")
     
     def test_latency_sweep_creates_runs_directory(self):
         """Test that latency sweep creates proper runs directory structure."""
@@ -186,7 +186,7 @@ report:
         assert 'latency_ns' in sweep_df.columns, "Missing latency_ns column"
         assert 'total_return' in sweep_df.columns, "Missing total_return column"
         
-        print(f"✅ Latency sweep created proper runs directory: {sweep_dir}")
+        print(f" Latency sweep created proper runs directory: {sweep_dir}")
     
     def test_pack_command_works(self):
         """Test that the pack command works correctly."""
@@ -209,7 +209,7 @@ report:
         zip_size = zip_path.stat().st_size
         assert zip_size > 1000, f"Zip file too small: {zip_size} bytes"
         
-        print(f"✅ Pack command created zip file: {zip_path}")
+        print(f" Pack command created zip file: {zip_path}")
     
     def test_pack_validation_works(self):
         """Test that pack validation works correctly."""
@@ -228,7 +228,7 @@ report:
         assert len(validation['present_files']) >= 5, "Not enough files present"
         assert len(validation['missing_required']) == 0, f"Missing required files: {validation['missing_required']}"
         
-        print(f"✅ Pack validation passed for: {run_dir}")
+        print(f" Pack validation passed for: {run_dir}")
     
     def test_pack_listing_works(self):
         """Test that pack listing works correctly."""
@@ -254,7 +254,7 @@ report:
             assert 'size_formatted' in file_info, "File info missing size_formatted"
             assert file_info['size'] > 0, "File size should be positive"
         
-        print(f"✅ Pack listing works for: {run_dir}")
+        print(f" Pack listing works for: {run_dir}")
         print(f"  Files: {contents['file_count']}, Size: {contents['total_size_formatted']}")
     
     def test_plots_are_generated(self):
@@ -271,9 +271,9 @@ report:
         
         # We might not have plots if no trades were executed
         if len(plot_files) == 0:
-            print("⚠️  No plots generated (expected if no trades executed)")
+            print("  No plots generated (expected if no trades executed)")
         else:
-            print(f"✅ Generated {len(plot_files)} plot files")
+            print(f" Generated {len(plot_files)} plot files")
             for plot_file in plot_files:
                 assert plot_file.stat().st_size > 1000, f"Plot file too small: {plot_file.name}"
     
@@ -310,7 +310,7 @@ report:
             assert (sweep_run_dir / 'config.yaml').exists(), f"Sweep directory missing config.yaml: {sweep_run_dir}"
             assert (sweep_run_dir / 'performance.json').exists(), f"Sweep directory missing performance.json: {sweep_run_dir}"
         
-        print(f"✅ Runs directory structure is correct")
+        print(f" Runs directory structure is correct")
         print(f"  Single run: {single_run_dir}")
         if sweep_run_dir:
             print(f"  Sweep run: {sweep_run_dir}")
@@ -328,6 +328,6 @@ if __name__ == "__main__":
         test.test_pack_listing_works()
         test.test_plots_are_generated()
         test.test_runs_directory_structure()
-        print("\n🎉 All runs directory tests passed!")
+        print("\n All runs directory tests passed!")
     finally:
         test.teardown_method()

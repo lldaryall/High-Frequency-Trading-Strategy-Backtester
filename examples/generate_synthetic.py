@@ -237,9 +237,9 @@ def main():
         output_dir=args.output_dir
     )
     
-    print(f"\n✅ Synthetic data generation complete!")
-    print(f"📊 Book data: {book_file}")
-    print(f"📈 Trade data: {trade_file}")
+    print(f"\n Synthetic data generation complete!")
+    print(f" Book data: {book_file}")
+    print(f" Trade data: {trade_file}")
 
 
 if __name__ == "__main__":

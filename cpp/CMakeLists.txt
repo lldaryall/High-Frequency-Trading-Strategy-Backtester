@@ -6,20 +6,10 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Find Python and pybind11
-# Force use of pyenv Python if available, otherwise use system Python
-if(EXISTS "/Users/daryapylypenko/.pyenv/versions/3.11.9/bin/python")
-    message(STATUS "Using pyenv Python environment...")
-    set(Python_EXECUTABLE "/Users/daryapylypenko/.pyenv/versions/3.11.9/bin/python")
-    set(Python_ROOT_DIR "/Users/daryapylypenko/.pyenv/versions/3.11.9")
-    set(Python_INCLUDE_DIRS "/Users/daryapylypenko/.pyenv/versions/3.11.9/include/python3.11")
-    set(Python_LIBRARIES "/Users/daryapylypenko/.pyenv/versions/3.11.9/lib/libpython3.11.dylib")
-    set(Python_LIBRARY "/Users/daryapylypenko/.pyenv/versions/3.11.9/lib/libpython3.11.dylib")
-    set(Python_INCLUDE_DIR "/Users/daryapylypenko/.pyenv/versions/3.11.9/include/python3.11")
-    find_package(Python COMPONENTS Interpreter Development REQUIRED)
-else()
-    message(STATUS "Using system Python environment...")
-    find_package(Python COMPONENTS Interpreter Development REQUIRED)
-endif()
+# Explicitly set Python executable to use current environment
+set(Python_EXECUTABLE "/Users/daryapylypenko/.pyenv/shims/python")
+find_package(Python COMPONENTS Interpreter Development REQUIRED)
+message(STATUS "Found Python: ${Python_EXECUTABLE} (found version \"${Python_VERSION}\") found components: ${Python_COMPONENTS}")
 
 # Use the Python executable that was found
 set(PYTHON_EXECUTABLE ${Python_EXECUTABLE})

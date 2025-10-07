@@ -4,32 +4,32 @@ set -euo pipefail
 # CI Benchmark Script
 # Runs performance benchmarks and generates plots if C++ build succeeds
 
-echo "🚀 Starting CI Benchmark Process"
+echo " Starting CI Benchmark Process"
 echo "================================"
 
 # Check if we're in a CI environment
 if [ "${CI:-false}" = "true" ]; then
-    echo "📋 Running in CI environment"
+    echo " Running in CI environment"
     export PYTHONPATH="${PWD}:${PYTHONPATH}"
 else
-    echo "💻 Running locally"
+    echo " Running locally"
 fi
 
 # Function to check if C++ extension is available
 check_cpp_extension() {
-    echo "🔍 Checking C++ extension availability..."
+    echo " Checking C++ extension availability..."
     if python -c "import flashback.market._match_cpp; print('C++ extension available')" 2>/dev/null; then
-        echo "✅ C++ extension is available"
+        echo " C++ extension is available"
         return 0
     else
-        echo "❌ C++ extension not available"
+        echo " C++ extension not available"
         return 1
     fi
 }
 
 # Function to run benchmarks
 run_benchmarks() {
-    echo "📊 Running performance benchmarks..."
+    echo " Running performance benchmarks..."
     
     # Run benchmark with different order counts for comprehensive analysis
     local orders=(100000 500000 1000000)
@@ -46,12 +46,12 @@ run_benchmarks() {
     done
     
     # Generate plots for the largest benchmark
-    echo "📈 Generating plots..."
+    echo " Generating plots..."
     python flashback/metrics/bench_plots.py \
         "$results_dir/bench_1000000.csv" \
         --output-dir "$results_dir/plots"
     
-    echo "✅ Benchmarks completed successfully"
+    echo " Benchmarks completed successfully"
     return 0
 }
 
@@ -60,7 +60,7 @@ generate_summary() {
     local results_dir="ci_benchmark_results"
     local summary_file="$results_dir/summary.md"
     
-    echo "📝 Generating summary report..."
+    echo " Generating summary report..."
     
     cat > "$summary_file" << EOF
 # CI Benchmark Results
@@ -72,9 +72,9 @@ generate_summary() {
 EOF
 
     if check_cpp_extension; then
-        echo "✅ **Available** - C++ matching engine is built and functional" >> "$summary_file"
+        echo " **Available** - C++ matching engine is built and functional" >> "$summary_file"
     else
-        echo "❌ **Not Available** - Falling back to Python implementation" >> "$summary_file"
+        echo " **Not Available** - Falling back to Python implementation" >> "$summary_file"
     fi
 
     cat >> "$summary_file" << EOF
@@ -116,7 +116,7 @@ EOF
 
     find "$results_dir" -type f -name "*.png" -o -name "*.csv" -o -name "*.json" | sort >> "$summary_file"
     
-    echo "📄 Summary report saved to: $summary_file"
+    echo " Summary report saved to: $summary_file"
 }
 
 # Main execution
@@ -125,10 +125,10 @@ main() {
     
     # Check C++ extension
     if check_cpp_extension; then
-        echo "🎯 C++ extension available - running full benchmarks"
+        echo " C++ extension available - running full benchmarks"
         run_benchmarks
     else
-        echo "⚠️  C++ extension not available - running Python-only benchmarks"
+        echo "  C++ extension not available - running Python-only benchmarks"
         # Still run benchmarks but only with Python
         python flashback/utils/bench_cpp.py --orders 100000 --trials 1 --no-rich
     fi
@@ -140,13 +140,13 @@ main() {
     local duration=$((end_time - start_time))
     
     echo ""
-    echo "🎉 CI Benchmark Process Completed"
-    echo "⏱️  Total time: ${duration}s"
-    echo "📁 Results saved in: ci_benchmark_results/"
+    echo " CI Benchmark Process Completed"
+    echo "  Total time: ${duration}s"
+    echo " Results saved in: ci_benchmark_results/"
     
     # List generated files
     echo ""
-    echo "📋 Generated files:"
+    echo " Generated files:"
     find ci_benchmark_results -type f | sort | sed 's/^/  - /'
 }
 

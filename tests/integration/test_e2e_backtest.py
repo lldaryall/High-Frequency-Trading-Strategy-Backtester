@@ -111,13 +111,13 @@ class TestEndToEndBacktest:
     
     def test_momentum_strategy_e2e(self, backtest_config):
         """Test momentum strategy end-to-end with performance assertions."""
-        print("🚀 Starting end-to-end backtest...")
+        print(" Starting end-to-end backtest...")
         
         # Run backtest
         runner = BacktestRunner(backtest_config)
         results = runner.run()
         
-        print("✅ Backtest completed, validating results...")
+        print(" Backtest completed, validating results...")
         
         # Validate output directory exists
         output_dir = Path(backtest_config.report.output_dir)
@@ -152,7 +152,7 @@ class TestEndToEndBacktest:
         with open(performance_file, 'r') as f:
             performance = json.load(f)
         
-        print(f"📊 Performance Metrics:")
+        print(f" Performance Metrics:")
         print(f"   Total Trades: {performance.get('total_trades', 0)}")
         print(f"   Total Return: {performance.get('total_return', 0):.2%}")
         print(f"   Sharpe Ratio: {performance.get('sharpe_ratio', 0):.2f}")
@@ -197,7 +197,7 @@ class TestEndToEndBacktest:
         assert 'order_id' in blotter_df.columns, "Blotter should have order_id column"
         assert 'status' in blotter_df.columns, "Blotter should have status column"
         
-        print("✅ All performance assertions passed!")
+        print(" All performance assertions passed!")
     
     def test_mean_reversion_strategy_e2e(self, synthetic_data, temp_dir):
         """Test mean reversion strategy end-to-end."""
@@ -271,7 +271,7 @@ class TestEndToEndBacktest:
         total_trades = performance.get('total_trades', 0)
         assert total_trades > 0, f"Expected >0 trades, got {total_trades}"
         
-        print(f"✅ Mean reversion strategy completed with {total_trades} trades")
+        print(f" Mean reversion strategy completed with {total_trades} trades")
     
     def test_latency_sensitivity_e2e(self, synthetic_data, temp_dir):
         """Test latency sensitivity analysis end-to-end."""
@@ -354,11 +354,11 @@ class TestEndToEndBacktest:
         
         # Performance should generally decrease with higher latency
         # (allowing for some noise)
-        print(f"📊 Latency sensitivity results:")
+        print(f" Latency sensitivity results:")
         for i, (lat, ret) in enumerate(sorted_data):
             print(f"   {lat/1000:.0f}μs: {ret:.2%} return")
         
-        print("✅ Latency sensitivity analysis completed")
+        print(" Latency sensitivity analysis completed")
     
     def test_error_handling_e2e(self, temp_dir):
         """Test error handling in end-to-end scenarios."""
@@ -405,7 +405,7 @@ class TestEndToEndBacktest:
         with pytest.raises((FileNotFoundError, ValueError)):
             runner.run()
         
-        print("✅ Error handling test passed")
+        print(" Error handling test passed")
     
     def test_performance_benchmarks(self, backtest_config):
         """Test that backtest completes within reasonable time."""
@@ -423,7 +423,7 @@ class TestEndToEndBacktest:
         # Should complete within 30 seconds for 50k events
         assert execution_time < 30.0, f"Backtest took too long: {execution_time:.2f}s"
         
-        print(f"✅ Backtest completed in {execution_time:.2f}s")
+        print(f" Backtest completed in {execution_time:.2f}s")
     
     def test_data_consistency_e2e(self, backtest_config):
         """Test data consistency across all output files."""
@@ -457,7 +457,7 @@ class TestEndToEndBacktest:
             assert abs(total_pnl_csv - total_pnl_perf) < 1e-6, \
                 f"PnL mismatch: JSON={total_pnl_perf}, CSV={total_pnl_csv}"
         
-        print("✅ Data consistency validation passed")
+        print(" Data consistency validation passed")
 
 
 if __name__ == "__main__":

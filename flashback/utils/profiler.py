@@ -310,7 +310,7 @@ def run_comprehensive_profile():
     """Run comprehensive performance profiling."""
     profiler = PerformanceProfiler()
     
-    print("🔍 Starting comprehensive performance profiling...")
+    print(" Starting comprehensive performance profiling...")
     
     # Profile key components
     print("\n1. Profiling matching engine...")
@@ -331,7 +331,7 @@ def run_comprehensive_profile():
     print("\n6. Generating report...")
     report_file = profiler.generate_report()
     
-    print(f"\n✅ Profiling complete! Report saved to: {report_file}")
+    print(f"\n Profiling complete! Report saved to: {report_file}")
 
 
 if __name__ == "__main__":

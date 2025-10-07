@@ -137,7 +137,7 @@ report:
         assert 'sharpe_ratio' in perf, "Missing sharpe_ratio in performance"
         assert 'turnover' in perf, "Missing turnover in performance"
         
-        print("✅ Simple strategy test passed - system is working")
+        print(" Simple strategy test passed - system is working")
 
 
 if __name__ == "__main__":
@@ -146,6 +146,6 @@ if __name__ == "__main__":
     test.setup_method()
     try:
         test.test_simple_strategy_execution()
-        print("\n🎉 Simple strategy test passed!")
+        print("\n Simple strategy test passed!")
     finally:
         test.teardown_method()

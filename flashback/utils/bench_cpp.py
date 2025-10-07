@@ -315,11 +315,11 @@ class BenchmarkRunner:
         
         # Print formatted banner
         self.console.print()
-        self.console.print("[bold blue]⚡ Flashback C++ Engine Benchmark ⚡[/bold blue]")
+        self.console.print("[bold blue] Flashback C++ Engine Benchmark [/bold blue]")
         self.console.print("[bold blue]-----------------------------------[/bold blue]")
         self.console.print(f"Python engine throughput:   [yellow]{python_throughput}[/yellow]")
         self.console.print(f"C++ engine throughput:     [green]{cpp_throughput}[/green]")
-        self.console.print(f"Speedup:                   [bold green]{speedup:.1f}× faster[/bold green]")
+        self.console.print(f"Speedup:                   [bold green]{speedup:.1f}x faster[/bold green]")
         self.console.print(f"Latency p95:               [cyan]{latency_str}[/cyan]")
         self.console.print()
     
@@ -406,11 +406,11 @@ class BenchmarkRunner:
         
         # Print formatted banner
         print()
-        print("⚡ Flashback C++ Engine Benchmark ⚡")
+        print(" Flashback C++ Engine Benchmark ")
         print("-----------------------------------")
         print(f"Python engine throughput:   {python_throughput}")
         print(f"C++ engine throughput:     {cpp_throughput}")
-        print(f"Speedup:                   {speedup:.1f}× faster")
+        print(f"Speedup:                   {speedup:.1f}x faster")
         print(f"Latency p95:               {latency_str}")
         print()
     

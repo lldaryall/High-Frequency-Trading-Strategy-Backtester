@@ -43,7 +43,7 @@ class BacktestReporter:
             blotter: Order blotter DataFrame
             performance_metrics: Performance metrics dictionary
         """
-        print(f"📊 Generating backtest report in {self.output_dir}")
+        print(f" Generating backtest report in {self.output_dir}")
         
         # Save configuration
         self._save_config()
@@ -64,7 +64,7 @@ class BacktestReporter:
         if self.config.report.plots:
             self._generate_plots(trades, positions, performance_metrics)
         
-        print(f"✅ Report generated successfully in {self.output_dir}")
+        print(f" Report generated successfully in {self.output_dir}")
     
     def _save_config(self) -> None:
         """Save the backtest configuration."""
@@ -195,7 +195,7 @@ class BacktestReporter:
                        positions: List[Dict[str, Any]], 
                        performance_metrics: Dict[str, Any]) -> None:
         """Generate visualization plots."""
-        print("📈 Generating plots...")
+        print(" Generating plots...")
         
         # Convert to DataFrames
         trades_df = pd.DataFrame(trades) if trades else pd.DataFrame()

@@ -316,19 +316,19 @@ class BenchmarkPlotter:
         try:
             plot_files['ops_comparison'] = self.create_ops_comparison_chart(data, output_dir)
             if self.console:
-                self.console.print(f"[green]✓[/green] Ops comparison chart: {plot_files['ops_comparison']}")
+                self.console.print(f"[green][/green] Ops comparison chart: {plot_files['ops_comparison']}")
             
             plot_files['latency_distribution'] = self.create_latency_distribution_chart(data, output_dir)
             if self.console:
-                self.console.print(f"[green]✓[/green] Latency distribution chart: {plot_files['latency_distribution']}")
+                self.console.print(f"[green][/green] Latency distribution chart: {plot_files['latency_distribution']}")
             
             plot_files['throughput_scatter'] = self.create_throughput_scatter(data, output_dir)
             if self.console:
-                self.console.print(f"[green]✓[/green] Throughput scatter plot: {plot_files['throughput_scatter']}")
+                self.console.print(f"[green][/green] Throughput scatter plot: {plot_files['throughput_scatter']}")
             
             plot_files['performance_summary'] = self.create_performance_summary(data, output_dir)
             if self.console:
-                self.console.print(f"[green]✓[/green] Performance summary: {plot_files['performance_summary']}")
+                self.console.print(f"[green][/green] Performance summary: {plot_files['performance_summary']}")
             
         except Exception as e:
             if self.console:
@@ -353,7 +353,7 @@ class BenchmarkPlotter:
             json.dump(metadata, f, indent=2)
         
         if self.console:
-            self.console.print(f"[green]✓[/green] Metadata saved: {metadata_file}")
+            self.console.print(f"[green][/green] Metadata saved: {metadata_file}")
         
         return plot_files
 
@@ -388,11 +388,11 @@ def main():
         if console:
             console.print(f"\n[green]Successfully generated {len(plot_files)} plots![/green]")
             for plot_name, plot_file in plot_files.items():
-                console.print(f"  • {plot_name}: {plot_file}")
+                console.print(f"  � {plot_name}: {plot_file}")
         else:
             print(f"\nSuccessfully generated {len(plot_files)} plots!")
             for plot_name, plot_file in plot_files.items():
-                print(f"  • {plot_name}: {plot_file}")
+                print(f"  � {plot_name}: {plot_file}")
         
         return 0
         
