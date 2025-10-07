@@ -1,0 +1,47 @@
+{
+  "total_return": 0.0,
+  "annualized_return": 0.0,
+  "sharpe_ratio": 0.0,
+  "max_drawdown": 0.0,
+  "hit_rate": 0.0,
+  "total_trades": 0.0,
+  "mean_latency_ns": 0.0,
+  "p95_latency_ns": 0.0,
+  "sweep_type": "latency_sensitivity",
+  "latency_range_ns": "100000-250000",
+  "total_runs": 2,
+  "sensitivity_analysis": {
+    "correlations": {
+      "total_return": NaN,
+      "sharpe_ratio": NaN,
+      "max_drawdown": NaN
+    },
+    "sensitivity_per_us": {
+      "total_return": 0.0,
+      "sharpe_ratio": 0.0
+    },
+    "degradation_pct": {
+      "total_return": 0.0,
+      "sharpe_ratio": 0.0
+    },
+    "latency_range_ns": {
+      "min": 100000,
+      "max": 250000,
+      "range": 150000
+    },
+    "performance_range": {
+      "total_return": {
+        "min": 0.0,
+        "max": 0.0
+      },
+      "sharpe_ratio": {
+        "min": 0.0,
+        "max": 0.0
+      },
+      "max_drawdown": {
+        "min": 0.0,
+        "max": 0.0
+      }
+    }
+  }
+}

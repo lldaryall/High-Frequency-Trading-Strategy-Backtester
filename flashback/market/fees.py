@@ -415,10 +415,11 @@ class FeeCalculator:
     
     def calculate_commission(self, order) -> float:
         """Calculate commission for an order."""
-        return order.size * self.commission_per_share + self.commission_per_trade
+        return order.quantity * self.commission_per_share + self.commission_per_trade
     
     def calculate_slippage(self, order, fill_price: float) -> float:
         """Calculate slippage for an order."""
+        from .orders import OrderType
         if order.order_type == OrderType.MARKET:
-            return abs(fill_price - order.price) * order.size
+            return abs(fill_price - order.price) * order.quantity
         return 0.0

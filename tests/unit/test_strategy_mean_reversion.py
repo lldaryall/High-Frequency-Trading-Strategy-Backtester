@@ -310,13 +310,13 @@ class TestMeanReversionStrategy:
         for i in range(20):
             if i < 10:
                 # Normal prices around base
-                price = base_price + np.random.normal(0, 0.5)
+                price = base_price + 0.1
             elif i < 15:
                 # Extreme low prices (should trigger long signal)
-                price = base_price - 3.0 + np.random.normal(0, 0.2)
+                price = base_price - 3.0
             else:
                 # Recovery (should trigger exit)
-                price = base_price - 0.5 + np.random.normal(0, 0.2)
+                price = base_price - 0.5
             prices.append(price)
         
         # Process price data

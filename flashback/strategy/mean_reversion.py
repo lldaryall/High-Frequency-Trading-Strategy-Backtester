@@ -151,7 +151,16 @@ class MeanReversionStrategy(BaseStrategy):
         
         # Check if position is closed
         if self.current_position == 0:
-            self._close_position(trade.price)
+            # Store the position size before it was zeroed out
+            # For a SELL trade that closes a long position, use the original position size
+            # For a BUY trade that closes a short position, use the original position size
+            if trade.side == 'SELL':
+                # This was a sell that closed a long position
+                position_size = trade.quantity
+            else:
+                # This was a buy that closed a short position
+                position_size = -trade.quantity
+            self._close_position(trade.price, position_size)
         
         return []
     
@@ -301,23 +310,28 @@ class MeanReversionStrategy(BaseStrategy):
         
         return False
     
-    def _close_position(self, exit_price: float) -> None:
+    def _close_position(self, exit_price: float, position_size: int = None) -> None:
         """
         Close current position and update statistics.
         
         Args:
             exit_price: Price at which position was closed
+            position_size: Size of position being closed (if None, use current_position)
         """
         if self.entry_price is None:
             return
         
+        # Use provided position size or current position
+        if position_size is None:
+            position_size = self.current_position
+        
         # Calculate P&L
-        if self.current_position > 0:
+        if position_size > 0:
             # Long position
-            pnl = (exit_price - self.entry_price) * self.current_position
+            pnl = (exit_price - self.entry_price) * position_size
         else:
             # Short position
-            pnl = (self.entry_price - exit_price) * abs(self.current_position)
+            pnl = (self.entry_price - exit_price) * abs(position_size)
         
         # Update statistics
         self.total_trades += 1

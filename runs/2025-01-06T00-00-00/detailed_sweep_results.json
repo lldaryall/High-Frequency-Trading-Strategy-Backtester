@@ -1,14 +1,13 @@
 {
   "latency_values": [
     100000,
-    250000,
-    500000
+    250000
   ],
   "results": [
     {
       "latency_ns": 100000,
       "latency_model": "random",
-      "config_hash": "6366494078471529275",
+      "config_hash": "8824051458875485329",
       "performance": {
         "total_return": 0.0,
         "annualized_return": 0.0,
@@ -52,51 +51,7 @@
     {
       "latency_ns": 250000,
       "latency_model": "random",
-      "config_hash": "-6420835430862495530",
-      "performance": {
-        "total_return": 0.0,
-        "annualized_return": 0.0,
-        "volatility": 0.0,
-        "sharpe_ratio": 0.0,
-        "max_drawdown": 0.0,
-        "max_drawdown_duration": 0,
-        "total_trades": 0,
-        "winning_trades": 0,
-        "losing_trades": 0,
-        "hit_rate": 0.0,
-        "avg_win": 0.0,
-        "avg_loss": 0.0,
-        "win_loss_ratio": 0.0,
-        "profit_factor": 0.0,
-        "turnover": 0.0,
-        "avg_position_size": 0.0,
-        "max_position_size": 0.0,
-        "mean_latency_ns": 0.0,
-        "p95_latency_ns": 0.0,
-        "p99_latency_ns": 0.0,
-        "var_95": 0.0,
-        "cvar_95": 0.0,
-        "calmar_ratio": 0,
-        "start_time": 1000000000000000000,
-        "end_time": 1000000199999000000,
-        "duration_days": 0.0023148032407407405,
-        "initial_capital": 1000000.0,
-        "final_capital": 1000000.0,
-        "total_fees": 0,
-        "total_slippage": 0.0
-      },
-      "summary": {
-        "total_events": 59839,
-        "total_trades": 0,
-        "total_snapshots": 59839,
-        "strategy": "momentum_imbalance",
-        "symbol": "AAPL"
-      }
-    },
-    {
-      "latency_ns": 500000,
-      "latency_model": "random",
-      "config_hash": "-5321601515991340731",
+      "config_hash": "-2738868121109131723",
       "performance": {
         "total_return": 0.0,
         "annualized_return": 0.0,
@@ -154,8 +109,8 @@
     },
     "latency_range_ns": {
       "min": 100000,
-      "max": 500000,
-      "range": 400000
+      "max": 250000,
+      "range": 150000
     },
     "performance_range": {
       "total_return": {
@@ -173,8 +128,8 @@
     }
   },
   "summary": {
-    "total_runs": 3,
-    "latency_range": "100000ns - 500000ns",
+    "total_runs": 2,
+    "latency_range": "100000ns - 250000ns",
     "base_strategy": "momentum_imbalance"
   }
 }
