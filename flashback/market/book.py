@@ -76,6 +76,10 @@ class CppMatchingEngineWrapper:
             fills.append(taker_fill)
             self._fills.append(taker_fill)
             
+            # Update the order with the fill
+            if order_id in self._orders:
+                self._orders[order_id].update_fill(quantity, price)
+            
             # Update statistics
             self.total_volume += quantity
             self.total_trades += 1

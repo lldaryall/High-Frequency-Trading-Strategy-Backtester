@@ -456,8 +456,8 @@ class TestOrderRouter:
         
         # Check that order was added to order book
         order_book = router.get_order_book("AAPL")
-        assert len(order_book.bids) == 1
-        assert 150.0 in order_book.bids
+        # Check that we can get the best bid (indicates order was added)
+        assert order_book.get_best_bid() == 150.0
     
     def test_fill_aggregation(self):
         """Test fill aggregation in order state."""
@@ -494,18 +494,18 @@ class TestOrderRouter:
         events = router.process_pending_orders(1000)
         
         # Check that fills were generated
-        assert len(events) == 2  # The sell order gets fills returned by matching engine
+        assert len(events) == 1  # Only the taker order (sell) generates a fill event
         
         # Check order state for the sell order (order_2) - this should have fills
         sell_order_state = router.blotter.get_order("order_2")
-        assert sell_order_state.total_filled_qty == 200  # Matching engine returns 2 fills
+        assert sell_order_state.total_filled_qty == 100  # Should be filled with 100 shares
         assert sell_order_state.is_filled()
-        assert len(sell_order_state.fills) == 2  # Should have 2 fills (matching engine bug)
+        assert len(sell_order_state.fills) == 1  # Should have 1 fill
         
         # Check order state for the buy order (order_1) - this should be filled but no fills tracked by router
         buy_order_state = router.blotter.get_order("order_1")
-        assert buy_order_state.order.is_filled()  # Order is filled by matching engine
-        assert buy_order_state.total_filled_qty == 0  # But no fills tracked by router
+        assert buy_order_state.is_filled()  # Order state should be filled
+        assert buy_order_state.total_filled_qty == 0  # No fills tracked by router (was already in book)
         assert len(buy_order_state.fills) == 0  # No fills tracked by router
     
     def test_vwap_calculation(self):

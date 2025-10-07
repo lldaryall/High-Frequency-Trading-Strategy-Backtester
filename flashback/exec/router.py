@@ -451,33 +451,34 @@ class OrderRouter:
         # Submit to matching engine
         fills = order_book.add_order(order)
         
-        # Process fills
+        # Process fills - only process fills that belong to this order
         for fill in fills:
-            # Calculate commission
-            commission = self.fee_model.calculate_fee(fill)
-            
-            # Update order state
-            order_state.add_fill(fill, commission)
-            
-            # Add to blotter
-            self.blotter.add_fill(fill, order.order_id, order_state.strategy_id)
-            
-            # Create fill event
-            fill_event = FillEvent(
-                timestamp=pd.Timestamp(current_time, unit='ns'),
-                event_type=EventType.FILL,
-                order_id=order.order_id,
-                symbol=order.symbol,
-                side=order.side.value,
-                quantity=fill.quantity,
-                price=fill.price,
-                commission=commission
-            )
-            events.append(fill_event)
-            
-            # Call callback
-            if self.on_fill_callback:
-                self.on_fill_callback(fill_event)
+            if fill.order_id == order.order_id:
+                # Calculate commission
+                commission = self.fee_model.calculate_fee(fill)
+                
+                # Update order state
+                order_state.add_fill(fill, commission)
+                
+                # Add to blotter
+                self.blotter.add_fill(fill, order.order_id, order_state.strategy_id)
+                
+                # Create fill event
+                fill_event = FillEvent(
+                    timestamp=pd.Timestamp(current_time, unit='ns'),
+                    event_type=EventType.FILL,
+                    order_id=order.order_id,
+                    symbol=order.symbol,
+                    side=order.side.value,
+                    quantity=fill.quantity,
+                    price=fill.price,
+                    commission=commission
+                )
+                events.append(fill_event)
+                
+                # Call callback
+                if self.on_fill_callback:
+                    self.on_fill_callback(fill_event)
         
         
         # Update order status

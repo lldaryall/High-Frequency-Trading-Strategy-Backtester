@@ -14,8 +14,8 @@
   },
   "latency_range_ns": {
     "min": 100000,
-    "max": 250000,
-    "range": 150000
+    "max": 200000,
+    "range": 100000
   },
   "performance_range": {
     "total_return": {
