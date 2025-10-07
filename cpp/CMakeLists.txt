@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Find Python and pybind11
-# Check if we're in a local pyenv environment first
+# Force use of pyenv Python if available, otherwise use system Python
 if(EXISTS "/Users/daryapylypenko/.pyenv/versions/3.11.9/bin/python")
     message(STATUS "Using pyenv Python environment...")
     set(Python_EXECUTABLE "/Users/daryapylypenko/.pyenv/versions/3.11.9/bin/python")
@@ -21,12 +21,19 @@ else()
     find_package(Python COMPONENTS Interpreter Development REQUIRED)
 endif()
 
-# Use the specific Python executable - use the same Python that was found
-if(Python_EXECUTABLE)
-    set(PYTHON_EXECUTABLE ${Python_EXECUTABLE})
-else()
-    set(PYTHON_EXECUTABLE "/Users/daryapylypenko/.pyenv/versions/3.11.9/bin/python")
-    set(Python_EXECUTABLE "/Users/daryapylypenko/.pyenv/versions/3.11.9/bin/python")
+# Use the Python executable that was found
+set(PYTHON_EXECUTABLE ${Python_EXECUTABLE})
+
+# Check if pybind11 is available in the found Python
+execute_process(
+    COMMAND ${PYTHON_EXECUTABLE} -c "import pybind11; print('pybind11 available')"
+    RESULT_VARIABLE PYBIND11_CHECK_RESULT
+    OUTPUT_VARIABLE PYBIND11_CHECK_OUTPUT
+    ERROR_VARIABLE PYBIND11_CHECK_ERROR
+)
+
+if(NOT PYBIND11_CHECK_RESULT EQUAL 0)
+    message(FATAL_ERROR "pybind11 not found in Python environment. Please install with: pip install pybind11")
 endif()
 
 # Get pybind11 path from Python

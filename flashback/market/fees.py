@@ -388,12 +388,13 @@ class FeeCalculator:
         self.commission_per_trade = 0.0
         
         # Use a simple basis points model
-        self.fee_model = BasisPointsFeeModel(
+        fee_config = FeeConfig(
             maker_bps=0.0,
             taker_bps=0.0,
             maker_per_share=self.commission_per_share,
             taker_per_share=self.commission_per_share
         )
+        self.fee_model = BasisPointsFeeModel(fee_config)
     
     def calculate_fees(self, fill) -> Dict[str, float]:
         """Calculate fees for a fill."""

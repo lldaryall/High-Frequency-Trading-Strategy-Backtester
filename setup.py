@@ -58,6 +58,7 @@ setup(
         "pytest>=7.0.0",
         "pytest-cov>=4.0.0",
         "pydantic>=2.0.0",
+        "pybind11>=2.10.0",
     ],
     extras_require={
         "dev": [

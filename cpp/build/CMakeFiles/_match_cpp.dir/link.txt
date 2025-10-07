@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -arch arm64 -Xlinker -undefined -Xlinker dynamic_lookup -flto -bundle -Wl,-headerpad_max_install_names -o "/Users/daryapylypenko/Desktop/Github/QuantProjects/High frequency/High-Frequency-Trading-Strategy-Backtester/flashback/market/_match_cpp.so" CMakeFiles/_match_cpp.dir/pybind_module.cpp.o CMakeFiles/_match_cpp.dir/match_engine.cpp.o
